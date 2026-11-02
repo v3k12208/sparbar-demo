@@ -366,6 +366,79 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
 @media (max-width: 560px) { .bubble { max-width: 92%; } }
 .suggest .btn { white-space: normal; text-align: left; max-width: 100%; }
 
+/* Employee and supervisor modes */
+.mode-seg button { padding-inline: 12px; }
+.rail-foot .seg { align-self: flex-start; }
+.back { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 500; text-decoration: none; margin-bottom: 6px; }
+.back svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.btn svg + * { margin: 0; }
+
+.progress-card { display: flex; flex-direction: column; gap: 12px; }
+.progress { height: 8px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); overflow: hidden; }
+.progress span { display: block; height: 100%; background: var(--good); border-radius: 999px; transition: width .3s; }
+.howto { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13px; color: var(--ink-2); }
+.howto span { display: inline-flex; align-items: center; gap: 8px; }
+.howto b { width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-size: 12px; }
+
+.work { display: flex; flex-direction: column; gap: 10px; }
+.work-row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, .9fr) minmax(0, 1.4fr) auto; align-items: center; gap: 16px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--line-2); border-radius: var(--r); }
+.work-row.open { border-left-color: var(--warning); }
+.work-row.ready { border-left-color: var(--accent); }
+.work-row.submitted { border-left-color: var(--info); }
+.work-row.approved { border-left-color: var(--good); }
+.work-name h3 { font-size: 16px; }
+.work-kg { display: flex; flex-direction: column; }
+.work-kg b { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.work-state { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.state { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 650; white-space: nowrap; }
+.state .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line-2); flex: none; }
+.state.open { color: var(--warning-text); } .state.open .dot { background: var(--warning); }
+.state.ready { color: var(--accent-text); } .state.ready .dot { background: var(--accent); }
+.state.submitted { color: var(--info-text); } .state.submitted .dot { background: var(--info); }
+.state.approved { color: var(--good-text); } .state.approved .dot { background: var(--good); }
+.vhead p .state { vertical-align: -1px; }
+
+.g-emp { grid-template-columns: minmax(330px, 430px) minmax(0, 1fr); align-items: start; }
+.steps { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.step.current { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent); }
+.step-h { display: flex; gap: 12px; align-items: center; }
+.step-n { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 13px; background: var(--surface-2); border: 1.5px solid var(--line-2); color: var(--ink-2); flex: none; }
+.step-n svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.step.current .step-n { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.step.done .step-n { background: var(--good); border-color: var(--good); color: #fff; }
+.step details summary { cursor: pointer; color: var(--ink-2); }
+.step details[open] summary { margin-bottom: 8px; }
+.step details ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
+.item { border: 1px solid var(--line); border-radius: var(--r-s); padding: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0; background: var(--surface); }
+.item + .item { margin-top: 2px; }
+.item-h { display: flex; }
+.item p { color: var(--ink-2); }
+.ok-line { display: flex; align-items: center; gap: 8px; color: var(--good-text); font-weight: 600; }
+.ok-line svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+.ackform { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; padding: 12px; border-radius: var(--r-s); background: var(--surface-2); border: 1px solid var(--line); min-width: 0; }
+.ackform input[type="text"] { width: 100%; }
+.quick { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: inherit; font-size: 12.5px; padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink-2); cursor: pointer; text-align: left; max-width: 100%; }
+.chip:hover { border-color: var(--accent); color: var(--accent-text); }
+.handled { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--ink-2); padding: 8px 10px; border-radius: var(--r-s); background: color-mix(in srgb, var(--good) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--good) 30%, var(--line)); width: 100%; }
+.handled > svg { width: 16px; height: 16px; stroke: var(--good-text); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; flex: none; margin-top: 2px; }
+.handled > div { flex: 1 1 auto; min-width: 0; }
+.check.is-handled > div:first-child { opacity: .55; }
+.handled-list summary { cursor: pointer; }
+.handled-list ul { margin: 6px 0 0; padding-left: 18px; }
+.preview-bar { gap: 10px; }
+
+@media (max-width: 1180px) { .g-emp { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) {
+  .work-row { grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; }
+  .work-row .work-state { grid-column: 1 / -1; }
+  .work-row .btn { grid-row: 1; grid-column: 2; }
+}
+@media (max-width: 920px) { .rail-foot { flex-wrap: wrap; gap: 8px; } }
+.step .ai-box { background: var(--surface-2); border-color: var(--line); }
+
 </style>
 </head>
 <body>
@@ -399,6 +472,11 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
 
   // ---------- db (localStorage) ----------
   const KEY = 'sparbar-demo-db';
+  // http://127.0.0.1:3000/?reset starts the demo from scratch: no handled checks, no locked reports, employee mode.
+  if (/[?&]reset\b/.test(location.search)) {
+    try { Object.keys(localStorage).filter((k) => k === KEY || k.indexOf('sparbar.') === 0).forEach((k) => localStorage.removeItem(k)); } catch (e) { /* storage blocked */ }
+    history.replaceState(null, '', location.pathname + location.hash);
+  }
   let data = {};
   try { data = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { data = {}; }
   const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { /* storage full or blocked: keep in memory */ } };
@@ -1274,15 +1352,21 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
   // ---------- state ----------
   const S = {
     lang: store.get('lang') === 'en' ? 'en' : 'sv', view: 'oversikt',
+    // Who is using the portal: 'employee' prepares reports, 'supervisor' approves and locks them.
+    mode: store.get('mode') === 'supervisor' ? 'supervisor' : 'employee',
+    reviews: {}, myName: '',
     dataset: null, ctx: null, ectx: null, rtOverrides: {},
     settings: { issuer: '', customerNames: {}, reportLang: 'sv', showCost: true },
     receipts: { local: [], shared: [], pending: [] }, useReceiptPrice: false, useReceiptMix: false, vatIncluded: false,
     result: null, checks: [], parity: null, scenarioKg: null, rstats: null,
     archive: [], archiveState: 'idle', caps: {}, me: null, names: {}, hashes: {},
-    ui: { chartTable: {}, dPage: 0, dStatus: '', dType: '', dSearch: '', rtOnlyUsed: true, rtSearch: '', confirmLock: false, verify: {}, busy: '', aiState: '', aiMsg: '', importMsg: null, sharedMsg: '' },
+    ui: { chartTable: {}, dPage: 0, dStatus: '', dType: '', dSearch: '', rtOnlyUsed: true, rtSearch: '', confirmLock: false, verify: {}, busy: '', aiState: '', aiMsg: '', importMsg: null, sharedMsg: '', ackOpen: '', ackText: {}, returnOpen: false, returnText: '' },
     dirtyShared: false, sharedLoaded: false
   };
   const L = (sv, en) => (S.lang === 'en' ? en : sv);
+  const EMP = () => S.mode === 'employee';
+  // The employee view never talks about AI: same help, plain words.
+  const LA = (sv, en, svPlain, enPlain) => (EMP() ? L(svPlain, enPlain) : L(sv, en));
   const dsT = (ds, k) => (S.lang === 'en' && ds.en && ds.en[k] != null ? ds.en[k] : k === 'datasetName' ? null : ds[k]);
   const loc = (lang) => (lang === 'en' ? 'en-GB' : 'sv-SE');
   const nfc = {};
@@ -1321,11 +1405,17 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
     spark: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>',
     yes: '<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 10"/>',
     part: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/>',
-    plan: '<circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/>'
+    plan: '<circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/>',
+    list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>',
+    send: '<path d="M4 12l16-8-6 16-2.5-6.5z"/><path d="M11.5 13.5L20 4"/>',
+    back: '<path d="M15 5l-7 7 7 7"/>'
   };
   const icon = (n) => `<svg viewBox="0 0 24 24" aria-hidden="true">${IP[n] || ''}</svg>`;
   const sevLabel = (s) => ({ critical: L('Kritisk', 'Critical'), serious: L('Allvarlig', 'Serious'), warning: L('Varning', 'Warning'), info: L('Info', 'Info'), ok: L('OK', 'OK') }[s]);
   const sevChip = (s) => `<span class="sev ${s}">${icon(s)}${sevLabel(s)}</span>`;
+  // Plain labels for the employee: what the level means for her, not its technical name.
+  const empSev = (s) => `<span class="sev ${s}">${icon(s)}${({ critical: L('Stoppar rapporten', 'Stops the report'), serious: L('Viktigt', 'Important'), warning: L('Kontrollera', 'Check'), info: L('Bra att veta', 'Good to know') }[s] || sevLabel(s))}</span>`;
+  const ct = (c) => (S.lang === 'en' ? c.en : c.sv);
 
   // ---------- dataset & context ----------
   function loadSample() {
@@ -1384,17 +1474,23 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
     if (S.useReceiptMix && S.rstats.hvoShareOfVolume != null) { c.fuelPlan.hvoPct = S.rstats.hvoShareOfVolume; c.fuelPlan.byType = {}; S.receiptApplied.mix = true; }
     return c;
   }
-  function recompute() {
-    const c = effectiveCtx();
-    S.ectx = c;
-    S.result = E.compute(S.dataset.lines, c);
-    S.scenarioKg = E.compute(S.dataset.lines, Object.assign({}, c, { fuelPlan: Object.assign({}, c.fuelPlan, { hvoPct: 0, byType: {} }) })).totals.kgWtw;
+  // One customer and period: result, Excel parity and checks.
+  function evaluate(c) {
+    const result = E.compute(S.dataset.lines, c);
     const ex = S.dataset.excel;
     const applicable = !!(ex && c.customer === ex.customer && c.from === ex.from && c.to === ex.to && c.fuelPlan.hvoFuel === 'HVO100' &&
       c.fuels.HVO100.wtw === ex.efHvo && c.prices.hvo === ex.price && c.fuelPlan.hvoPct === 1 && !Object.keys(c.fuelPlan.byType).length && !Object.keys(S.rtOverrides).length);
-    S.parity = applicable ? { applicable, portal: S.result.totals.kgWtw, excel: ex.totalKg, diff: Math.abs(S.result.totals.kgWtw - ex.totalKg) } : { applicable: false };
-    if (applicable) S.parity.ok = S.parity.diff < 0.01;
-    S.checks = E.checks(S.dataset.lines, S.result, c, { parity: S.parity, receiptsUsed: S.receiptApplied.mix || (S.rstats.n > 0 && S.useReceiptPrice), priceFromReceipts: S.receiptApplied.price });
+    const parity = applicable ? { applicable, portal: result.totals.kgWtw, excel: ex.totalKg, diff: Math.abs(result.totals.kgWtw - ex.totalKg) } : { applicable: false };
+    if (applicable) parity.ok = parity.diff < 0.01;
+    const checks = E.checks(S.dataset.lines, result, c, { parity, receiptsUsed: S.receiptApplied.mix || (S.rstats.n > 0 && S.useReceiptPrice), priceFromReceipts: S.receiptApplied.price });
+    return { result, parity, checks };
+  }
+  function recompute() {
+    const c = effectiveCtx();
+    S.ectx = c;
+    const ev = evaluate(c);
+    S.result = ev.result; S.parity = ev.parity; S.checks = ev.checks;
+    S.scenarioKg = E.compute(S.dataset.lines, Object.assign({}, c, { fuelPlan: Object.assign({}, c.fuelPlan, { hvoPct: 0, byType: {} }) })).totals.kgWtw;
   }
 
   // ---------- report model & hashes ----------
@@ -1455,12 +1551,97 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
     return { status: 'changed', version: same[0].version, rec: same[0] };
   }
 
+  // ---------- review: the employee handles checks and submits, the supervisor approves and locks ----------
+  // A report can only be locked when no critical, serious or warning check is open. "Open" means not dealt with:
+  // either fixed (the check no longer fires) or marked as handled with a comment. Critical checks: supervisor only.
+  const BLOCKING = ['critical', 'serious', 'warning'];
+  // Checks about the fleet or the method, not the customer: handled once, valid for every customer in the period.
+  const FLEET = /^(excluded-|hvoEvidence$|hvoFactor$|factorAge$|price$)/;
+  const isFleet = (c) => FLEET.test(c.id);
+  const revKey = (cust, from, to) => `${cust}__${from}__${to}`.replace(/[^A-Za-z0-9_\-.]/g, '_');
+  const fleetKey = (from, to) => revKey('alla', from, to);
+  // A customer-specific handling stops counting when the check's figures change; a fleet-level one does not.
+  const checkFp = (c) => (isFleet(c) ? c.id : `${c.id}|${c.sev}|${c.sv.t}|${c.sv.d}`);
+  const reviewOf = (cust, from, to) => S.reviews[revKey(cust, from, to)] || {};
+  function ackFor(c, cust, from, to) {
+    const doc = S.reviews[isFleet(c) ? fleetKey(from, to) : revKey(cust, from, to)];
+    const a = doc && doc.acks && doc.acks[c.id];
+    return a && a.fp === checkFp(c) ? a : null;
+  }
+  const openOf = (checks, cust, from, to) => checks.filter((c) => BLOCKING.includes(c.sev) && !ackFor(c, cust, from, to));
+  const openNow = () => (S.ectx ? openOf(S.checks, S.ectx.customer, S.ectx.from, S.ectx.to) : []);
+  const roleName = (r) => (r === 'supervisor' ? L('Chef', 'Supervisor') : L('Medarbetare', 'Employee'));
+  const who = () => ({ by: S.me || null, name: S.myName || '', role: S.mode, at: new Date().toISOString() });
+  // Local date and time for timestamps stored as ISO (UTC).
+  const when = (iso, withTime = true) => { const d = new Date(iso); if (!iso || isNaN(d)) return ''; return withTime ? d.toLocaleString(loc(S.lang), { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : d.toLocaleDateString(loc(S.lang), { year: 'numeric', month: '2-digit', day: '2-digit' }); };
+  const whoText = (w) => (w ? `${w.name || roleName(w.role)} · ${when(w.at)}` : '');
+  async function writeReview(key, doc) {
+    S.reviews[key] = doc;
+    const db = S.caps.db;
+    if (db) {
+      try { await db.doc('reviews/' + key).set(doc); }
+      catch (e) { toast(L('Kunde inte spara i portalen; ändringen finns bara i den här sessionen.', 'Could not save in the portal; the change only lives in this session.')); }
+    }
+    render();
+  }
+  function setAck(c, note) {
+    const e = S.ectx, key = isFleet(c) ? fleetKey(e.from, e.to) : revKey(e.customer, e.from, e.to);
+    const doc = clone(S.reviews[key] || {}); doc.acks = doc.acks || {};
+    doc.acks[c.id] = Object.assign({ fp: checkFp(c), sev: c.sev, t: c.sv.t, tEn: c.en.t, note }, who());
+    return writeReview(key, doc);
+  }
+  function clearAck(id) {
+    const c = S.checks.find((x) => x.id === id); if (!c) return;
+    const e = S.ectx, key = isFleet(c) ? fleetKey(e.from, e.to) : revKey(e.customer, e.from, e.to);
+    const doc = clone(S.reviews[key] || {}); if (doc.acks) delete doc.acks[id];
+    return writeReview(key, doc);
+  }
+  // Every handled check of the current report, with who handled it and why (shown to the supervisor, kept when locked).
+  function handledNow() {
+    const e = S.ectx;
+    return S.checks.filter((c) => BLOCKING.includes(c.sev)).map((c) => ({ c, a: ackFor(c, e.customer, e.from, e.to) })).filter((x) => x.a);
+  }
+  // Status of one customer's report in the period, for the work list.
+  function customerState(cust) {
+    const c = Object.assign({}, S.ectx, { customer: cust });
+    const ev = cust === S.ectx.customer ? { result: S.result, checks: S.checks } : evaluate(c);
+    if (!ev.result.invoicedCount) return { kind: 'empty', ev };
+    const kg = ev.result.totals.kgWtw;
+    const locked = S.archive.filter((a) => a.key === `${cust}|${c.from}|${c.to}`).sort((a, b) => b.version - a.version)[0];
+    if (locked && locked.totals && Math.abs(locked.totals.kgWtw - kg) < 0.01) return { kind: 'approved', version: locked.version, rec: locked, kg, ev, open: [] };
+    const open = openOf(ev.checks, cust, c.from, c.to);
+    const rv = reviewOf(cust, c.from, c.to);
+    if (rv.submitted && Math.abs(rv.submitted.kg - kg) < 0.01) return { kind: 'submitted', kg, ev, open, rv };
+    return { kind: open.length ? 'open' : 'ready', kg, ev, open, rv, changedAfterLock: !!locked };
+  }
+  async function submitReport() {
+    if (openNow().length) return;
+    const e = S.ectx, key = revKey(e.customer, e.from, e.to);
+    const doc = clone(S.reviews[key] || {});
+    doc.submitted = Object.assign({ kg: S.result.totals.kgWtw }, who()); doc.returned = null;
+    await writeReview(key, doc);
+    toast(L('Skickad till chefen för godkännande.', 'Sent to the supervisor for approval.'));
+  }
+  async function returnReport(note) {
+    const e = S.ectx, key = revKey(e.customer, e.from, e.to);
+    const doc = clone(S.reviews[key] || {});
+    doc.submitted = null; doc.returned = Object.assign({ note }, who());
+    S.ui.returnOpen = false; S.ui.returnText = '';
+    await writeReview(key, doc);
+    toast(L('Rapporten är skickad tillbaka med din kommentar.', 'The report was sent back with your comment.'));
+  }
+
   // ---------- capabilities ----------
   function initCaps() {
     const c = window.claude;
     if (!c || typeof c.use !== 'function') { S.archiveState = 'none'; return; }
     c.use('downloads').then((d) => { S.caps.downloads = d; softRefresh(); }).catch(() => {});
-    c.use('user').then(async (u) => { S.caps.user = u; if (u) { try { S.me = await u.id(); } catch (e) { S.me = null; } } }).catch(() => {});
+    c.use('user').then(async (u) => {
+      S.caps.user = u; if (!u) return;
+      try { S.me = await u.id(); } catch (e) { S.me = null; }
+      try { const p = typeof u.me === 'function' ? await u.me() : null; S.myName = (p && p.name) || ''; } catch (e) { S.myName = ''; }
+      if (!S.myName && S.me && u.profiles) { try { const ps = await u.profiles([S.me]); S.myName = (ps && ps[S.me] && ps[S.me].name) || ''; } catch (e) { /* name stays empty; the role is shown instead */ } }
+    }).catch(() => {});
     c.use('sample').then((s) => { S.caps.sample = s; if (s && s.limits) s.limits().then((l) => { S.caps.sampleLimits = l; softRefresh(); }).catch(() => {}); softRefresh(); }).catch(() => {});
     S.archiveState = 'loading';
     c.use('db').then((db) => { S.caps.db = db; if (db) subscribeDb(); else S.archiveState = 'none'; softRefresh(); }).catch(() => { S.archiveState = 'none'; });
@@ -1483,6 +1664,10 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
       resolveNames(S.archive.map((a) => a.createdBy).filter(Boolean));
       softRefresh();
     }, () => { clearTimeout(timer); S.archiveState = 'error'; softRefresh(); });
+    db.collection('reviews').onSnapshot((qs) => {
+      const m = {}; qs.docs.forEach((d) => { m[d.id] = d.data(); });
+      S.reviews = m; softRefresh();
+    }, () => {});
     db.collection('receipts').onSnapshot((qs) => {
       S.receipts.shared = [];
       S.receiptBatches = qs.docs.map((d) => { const b = d.data(); (b.rows || []).forEach((r) => S.receipts.shared.push(Object.assign({ batch: d.id }, r))); return Object.assign({ id: d.id }, b); });
@@ -1558,6 +1743,7 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
   // ---------- lock & verify ----------
   async function lockReport() {
     const db = S.caps.db; if (!db) return;
+    if (openNow().length) { S.ui.confirmLock = false; render(); toast(L('Det finns kontroller kvar att hantera.', 'There are checks left to handle.')); return; }
     await ensureHashes();
     const key = reportKey();
     const version = Math.max(0, ...S.archive.filter((a) => a.key === key).map((a) => a.version)) + 1;
@@ -1571,11 +1757,13 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
       factors: [...new Set(S.result.rows.map((r) => r.fuel))].map((k) => ({ key: k, wtw: c.fuels[k].wtw, ttw: c.fuels[k].ttw, validFrom: c.fuels[k].validFrom || '', source: c.fuels[k].source ? c.fuels[k].source.sv : '' })),
       prices: c.prices, hvoPct: c.fuelPlan.hvoPct, tonnageBasis: c.tonnageBasis, receipts: S.receiptApplied,
       inputHash: S.hashes.input.v, reportHash: S.hashes.report.v, dataset: { name: S.dataset.name, rows: S.dataset.lines.length, sample: !!S.dataset.isSample },
-      openChecks: S.checks.filter((x) => x.sev !== 'ok' && x.sev !== 'info').map((x) => x.sv.t),
-      createdAt: new Date().toISOString(), createdBy: S.me || null
+      openChecks: openNow().map((x) => x.sv.t),
+      handled: handledNow().map(({ c: x, a }) => ({ id: x.id, sev: x.sev, t: x.sv.t, tEn: x.en.t, note: a.note, by: a.by || null, name: a.name || '', role: a.role || '', at: a.at || '' })),
+      submitted: reviewOf(c.customer, c.from, c.to).submitted || null,
+      createdAt: new Date().toISOString(), createdBy: S.me || null, approvedByName: S.myName || '', approvedRole: S.mode
     };
     S.ui.busy = 'lock'; softRefresh();
-    try { await db.collection('reports').doc(id.replace(/[^A-Za-z0-9_\-.~:@+]/g, '_')).set(body); S.ui.confirmLock = false; toast(L(`Rapporten är låst som version ${version}.`, `The report is locked as version ${version}.`)); }
+    try { await db.collection('reports').doc(id.replace(/[^A-Za-z0-9_\-.~:@+]/g, '_')).set(body); S.ui.confirmLock = false; toast(L(`Rapporten är godkänd och låst som version ${version}.`, `The report is approved and locked as version ${version}.`)); }
     catch (e) { toast(e && e.code === 'invalid_argument' ? L('Du har inte behörighet att låsa rapporter.', 'You do not have permission to lock reports.') : L('Låsningen misslyckades. Försök igen.', 'Locking failed. Try again.')); }
     S.ui.busy = ''; render();
   }
@@ -1696,7 +1884,7 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
   let aiCtl = null;
   async function aiReadReceipts(files) {
     const sample = S.caps.sample, lim = S.caps.sampleLimits && S.caps.sampleLimits.images;
-    if (!sample || !lim) { S.ui.aiState = 'off'; S.ui.aiMsg = L('AI-avläsning av bilder och PDF fungerar när sidan är öppen i Claude.', 'AI reading of images and PDFs works when the page is open in Claude.'); render(); return; }
+    if (!sample || !lim) { S.ui.aiState = 'off'; S.ui.aiMsg = LA('AI-avläsning av bilder och PDF fungerar när sidan är öppen i Claude.', 'AI reading of images and PDFs works when the page is open in Claude.', 'Avläsning av foton och PDF är inte påslagen här.', 'Reading photos and PDFs is not switched on here.'); render(); return; }
     S.ui.aiState = 'busy'; S.ui.aiMsg = L('Förbereder filer…', 'Preparing files…'); render();
     const items = [];
     try {
@@ -1709,7 +1897,7 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
     const chunks = []; for (let i = 0; i < items.length; i += lim.maxCount) chunks.push(items.slice(i, i + lim.maxCount));
     let found = 0;
     for (const [ci, ch] of chunks.entries()) {
-      S.ui.aiMsg = L(`Claude läser kvitton (${ci + 1}/${chunks.length})…`, `Claude is reading receipts (${ci + 1}/${chunks.length})…`); render();
+      S.ui.aiMsg = LA(`Claude läser kvitton (${ci + 1}/${chunks.length})…`, `Claude is reading receipts (${ci + 1}/${chunks.length})…`, `Läser kvitton (${ci + 1}/${chunks.length})…`, `Reading receipts (${ci + 1}/${chunks.length})…`); render();
       aiCtl = new AbortController();
       const prompt = `You read fuel receipts and fuel invoices for a Swedish haulage company. The images are, in order, pages from these files: ${ch.map((c) => c.name).join(', ')}.
 Reply with ONLY a JSON array. One object per fuel purchase line (skip AdBlue, washer fluid and anything that is not vehicle fuel):
@@ -1727,11 +1915,11 @@ Example: [{"date":"2026-03-04","product":"HVO100","fuel":"HVO100","liters":412.5
       } catch (e) {
         const code = e && e.code;
         S.ui.aiState = 'error';
-        S.ui.aiMsg = code === 'cancelled' ? L('Avbrutet.', 'Stopped.') : code === 'not_granted' || code === 'sampling_disabled' ? L('Claude har inte tillåtits för den här sidan.', 'Claude has not been allowed for this page.') : code === 'rate_limited' ? L('För många förfrågningar just nu. Försök igen om en stund.', 'Too many requests right now. Try again in a while.') : code === 'image_rejected' ? L('En fil kunde inte läsas som bild.', 'A file could not be read as an image.') : code === 'invalid_json' ? L('Svaret gick inte att tolka. Försök igen.', 'The answer could not be parsed. Try again.') : L('Avläsningen avbröts. Försök igen.', 'Reading was interrupted. Try again.');
+        S.ui.aiMsg = code === 'cancelled' ? L('Avbrutet.', 'Stopped.') : code === 'not_granted' || code === 'sampling_disabled' ? LA('Claude har inte tillåtits för den här sidan.', 'Claude has not been allowed for this page.', 'Avläsningen är inte påslagen för den här sidan.', 'Reading is not switched on for this page.') : code === 'rate_limited' ? L('För många förfrågningar just nu. Försök igen om en stund.', 'Too many requests right now. Try again in a while.') : code === 'image_rejected' ? L('En fil kunde inte läsas som bild.', 'A file could not be read as an image.') : code === 'invalid_json' ? L('Svaret gick inte att tolka. Försök igen.', 'The answer could not be parsed. Try again.') : L('Avläsningen avbröts. Försök igen.', 'Reading was interrupted. Try again.');
         render(); return;
       }
     }
-    S.ui.aiState = 'done'; S.ui.aiMsg = L(`Claude hittade ${found} ${found === 1 ? 'kvittorad' : 'kvittorader'}. Granska innan du sparar.`, `Claude found ${found} receipt ${found === 1 ? 'line' : 'lines'}. Review before saving.`); render();
+    S.ui.aiState = 'done'; S.ui.aiMsg = LA(`Claude hittade ${found} ${found === 1 ? 'kvittorad' : 'kvittorader'}. Granska innan du sparar.`, `Claude found ${found} receipt ${found === 1 ? 'line' : 'lines'}. Review before saving.`, `Hittade ${found} ${found === 1 ? 'kvittorad' : 'kvittorader'}. Kontrollera mot kvittot innan du sparar.`, `Found ${found} receipt ${found === 1 ? 'line' : 'lines'}. Check against the receipt before saving.`); render();
   }
   async function savePending(shared) {
     const rows = S.receipts.pending.splice(0);
@@ -1767,10 +1955,10 @@ Example: [{"date":"2026-03-04","product":"HVO100","fuel":"HVO100","liters":412.5
   }
   function aiErrText(e) {
     const c = e && e.code;
-    if (c === 'not_granted' || c === 'sampling_disabled') return L('AI är inte tillåtet för den här sidan.', 'AI is not allowed for this page.');
-    if (c === 'rate_limited') return L('För många AI-anrop just nu. Försök igen om en stund.', 'Too many AI calls right now. Try again shortly.');
+    if (c === 'not_granted' || c === 'sampling_disabled') return LA('AI är inte tillåtet för den här sidan.', 'AI is not allowed for this page.', 'Funktionen är inte påslagen för den här sidan.', 'This feature is not switched on for this page.');
+    if (c === 'rate_limited') return LA('För många AI-anrop just nu. Försök igen om en stund.', 'Too many AI calls right now. Try again shortly.', 'För många förfrågningar just nu. Försök igen om en stund.', 'Too many requests right now. Try again shortly.');
     if (c === 'cancelled') return L('Avbrutet.', 'Stopped.');
-    return L('AI-anropet misslyckades', 'The AI call failed') + (e && e.message ? ': ' + e.message : '.');
+    return LA('AI-anropet misslyckades', 'The AI call failed', 'Det gick inte just nu', 'That did not work right now') + (e && e.message ? ': ' + e.message : '.');
   }
   function aiContext(lang) {
     const r = S.result, t = r.totals, c = S.ectx, p = periodInfo();
@@ -1810,7 +1998,7 @@ Example: [{"date":"2026-03-04","product":"HVO100","fuel":"HVO100","liters":412.5
         const d = document.getElementById('doc-narr'); if (d) d.textContent = text;
       } });
       S.ai.summary[key] = { text: res.text.trim(), sig, live: false };
-      toast(L('Claude har skrivit sammanfattningen. Granska den innan du låser.', 'Claude wrote the summary. Review it before locking.'));
+      toast(LA('Claude har skrivit sammanfattningen. Granska den innan du låser.', 'Claude wrote the summary. Review it before locking.', 'Texten är klar. Läs igenom den innan du skickar.', 'The text is ready. Read it through before you send.'));
     } catch (e) {
       if (e && e.text && e.code !== 'refused') S.ai.summary[key] = { text: e.text, sig, live: false }; else delete S.ai.summary[key];
       if (!e || e.code !== 'cancelled') toast(aiErrText(e));
@@ -1906,41 +2094,55 @@ ${JSON.stringify(aiContext(S.lang))}`;
   }
 
   // ---------- rendering ----------
-  const VIEWS = [
-    ['oversikt', () => L('Översikt', 'Overview'), 'grid'], ['rapport', () => L('Kundrapport', 'Customer report'), 'file'], ['kontroller', () => L('Kontroller', 'Checks'), 'shield'],
-    ['assistent', () => L('AI-assistent', 'AI assistant'), 'spark'], ['data', () => L('Data', 'Data'), 'db'], ['kvitton', () => L('Kvitton', 'Receipts'), 'receipt'], ['faktorer', () => L('Faktorer', 'Factors'), 'sliders'], null,
-    ['regelverk', () => L('Regelverk', 'Regulations'), 'scale'], ['automatik', () => L('Automatik', 'Automation'), 'flow'], ['arkiv', () => L('Arkiv', 'Archive'), 'archive']
-  ];
+  // Two menus: the supervisor starts with the report to approve, the employee with her work list.
+  const NAV = {
+    supervisor: [
+      ['rapport', () => L('Kundrapport', 'Customer report'), 'file'], ['kontroller', () => L('Kontroller', 'Checks'), 'shield'], ['oversikt', () => L('Översikt', 'Overview'), 'grid'],
+      ['assistent', () => L('AI-assistent', 'AI assistant'), 'spark'], ['data', () => L('Data', 'Data'), 'db'], ['kvitton', () => L('Kvitton', 'Receipts'), 'receipt'], ['faktorer', () => L('Faktorer', 'Factors'), 'sliders'], null,
+      ['regelverk', () => L('Regelverk', 'Regulations'), 'scale'], ['automatik', () => L('Automatik', 'Automation'), 'flow'], ['arkiv', () => L('Arkiv', 'Archive'), 'archive']
+    ],
+    employee: [
+      ['mina', () => L('Mina rapporter', 'My reports'), 'list'], ['rapport', () => L('Rapport', 'Report'), 'file'], ['kvitton', () => L('Kvitton', 'Receipts'), 'receipt'], ['arkiv', () => L('Godkända', 'Approved'), 'archive']
+    ]
+  };
+  const navFor = () => NAV[S.mode];
+  const allowed = (v) => navFor().some((x) => x && x[0] === v);
   function renderNav() {
     document.documentElement.lang = S.lang;
     const sub = document.querySelector('.brand-sub'); if (sub) sub.textContent = L('Klimatrapporter för transporter', 'Climate reports for transport');
     $('#nav').setAttribute('aria-label', L('Huvudmeny', 'Main menu'));
-    const open = S.checks.filter((c) => c.sev === 'critical' || c.sev === 'serious').length;
-    $('#nav').innerHTML = VIEWS.map((v) => {
+    const open = openNow().length;
+    const todo = EMP() && S.dataset ? S.dataset.customers.filter((k) => { const st = customerState(k).kind; return st === 'open' || st === 'ready'; }).length : 0;
+    $('#nav').innerHTML = navFor().map((v) => {
       if (!v) return '<div class="nav-sep" role="separator"></div>';
-      const badge = v[0] === 'kontroller' && open ? `<span class="badge" aria-label="${open} ${L('allvarliga', 'serious')}">${open}</span>` : '';
+      const n = v[0] === 'kontroller' ? open : v[0] === 'mina' ? todo : 0;
+      const badge = n ? `<span class="badge" aria-label="${n} ${v[0] === 'mina' ? L('att göra', 'to do') : L('öppna', 'open')}">${n}</span>` : '';
       return `<a href="#${v[0]}" ${S.view === v[0] ? 'aria-current="page"' : ''}>${icon(v[2])}<span>${v[1]()}</span>${badge}</a>`;
     }).join('');
-    $('#railfoot').innerHTML = `<div class="seg" role="group" aria-label="${L('Språk', 'Language')}"><button data-act="lang" data-v="sv" aria-pressed="${S.lang === 'sv'}">SV</button><button data-act="lang" data-v="en" aria-pressed="${S.lang === 'en'}">EN</button></div>
+    $('#railfoot').innerHTML = `<div class="seg mode-seg" role="group" aria-label="${L('Läge', 'Mode')}"><button data-act="mode" data-v="employee" aria-pressed="${EMP()}">${L('Medarbetare', 'Employee')}</button><button data-act="mode" data-v="supervisor" aria-pressed="${!EMP()}">${L('Chef', 'Supervisor')}</button></div>
+      <div class="seg" role="group" aria-label="${L('Språk', 'Language')}"><button data-act="lang" data-v="sv" aria-pressed="${S.lang === 'sv'}">SV</button><button data-act="lang" data-v="en" aria-pressed="${S.lang === 'en'}">EN</button></div>
       <span class="hide-sm">${L('Prototyp · beräkningar körs i webbläsaren', 'Prototype · calculations run in the browser')}</span>`;
   }
   function statusPill() {
     const st = reportStatus();
     if (st.status === 'locked') return `<span class="pill locked"><span class="dot"></span>${L('Låst', 'Locked')} v${st.version}</span>`;
     if (st.status === 'changed') return `<span class="pill draft"><span class="dot"></span>${L('Ändrad sedan', 'Changed since')} v${st.version}</span>`;
+    const sub = S.ectx && reviewOf(S.ectx.customer, S.ectx.from, S.ectx.to).submitted;
+    if (sub && Math.abs(sub.kg - S.result.totals.kgWtw) < 0.01) return `<span class="pill sample"><span class="dot"></span>${L('Väntar på godkännande', 'Awaiting approval')}</span>`;
     return `<span class="pill draft"><span class="dot"></span>${L('Utkast', 'Draft')}</span>`;
   }
   function renderCtx() {
     const ds = S.dataset, c = S.ctx;
-    const custOpts = ds.customers.map((k) => `<option value="${esc(k)}" ${k === c.customer ? 'selected' : ''}>${esc(k)} · ${esc(custName(k))}</option>`).join('');
+    const flag = (k) => { if (EMP() || !S.ectx) return ''; const st = customerState(k).kind; return st === 'submitted' ? ' · ' + L('väntar på godkännande', 'awaiting approval') : st === 'approved' ? ' · ' + L('låst', 'locked') : ''; };
+    const custOpts = ds.customers.map((k) => `<option value="${esc(k)}" ${k === c.customer ? 'selected' : ''}>${esc(k)} · ${esc(custName(k))}${flag(k)}</option>`).join('');
     const perOpts = ds.presets.map((p) => `<option value="${p.id}" ${p.id === c.periodId ? 'selected' : ''}>${esc(p.label[S.lang])}</option>`).join('') + `<option value="custom" ${c.periodId === 'custom' ? 'selected' : ''}>${L('Eget intervall…', 'Custom range…')}</option>`;
     $('#ctxbar').innerHTML = `
-      <div class="ctx-field"><label for="ctx-customer">${L('Kund', 'Customer')}</label><select id="ctx-customer">${custOpts}</select></div>
+      ${S.view === 'mina' ? '' : `<div class="ctx-field"><label for="ctx-customer">${L('Kund', 'Customer')}</label><select id="ctx-customer">${custOpts}</select></div>`}
       <div class="ctx-field"><label for="ctx-period">${L('Period', 'Period')}</label><select id="ctx-period">${perOpts}</select></div>
       ${c.periodId === 'custom' ? `<div class="ctx-field"><label for="ctx-from">${L('Från – till', 'From – to')}</label><div class="ctx-dates"><input type="date" id="ctx-from" value="${c.from}" min="${ds.minDate}" max="${ds.maxDate}"><input type="date" id="ctx-to" aria-label="${L('Till', 'To')}" value="${c.to}" min="${ds.minDate}" max="${ds.maxDate}"></div></div>` : ''}
       <div class="ctx-spacer"></div>
       <span class="pill ${ds.isSample ? 'sample' : ''}" title="${esc(dsT(ds, 'source'))}">${icon('db').replace('<svg', '<svg width="13" height="13" style="stroke:currentColor;fill:none;stroke-width:2"')}${ds.isSample ? L('Exempeldata', 'Sample data') + ': ' : ''}${esc(dsT(ds, 'datasetName') || ds.name)}</span>
-      ${statusPill()}`;
+      ${S.view === 'mina' ? '' : statusPill()}`;
   }
 
   function hbarChart(id) {
@@ -2045,8 +2247,34 @@ ${JSON.stringify(aiContext(S.lang))}`;
     const ex = S.ai.explain[c.id];
     const exHtml = ex && ex.t === T.t ? `<div class="ai-box" style="margin-top:8px"><span class="ai-tag">${icon('spark')}Claude${ex.live ? ' · ' + L('skriver…', 'writing…') : ''}</span><div id="ai-exp-${esc(c.id)}" class="${ex.live ? 'ai-live' : ''}">${mdLite(ex.text)}</div></div>` : '';
     const aiBtn = c.sev !== 'ok' && aiReady() && !(ex && ex.t === T.t) ? `<button class="btn ghost small" data-act="aiExplain" data-id="${esc(c.id)}" ${S.ai.busy ? 'disabled' : ''}>${icon('spark')}${L('Förklara med AI', 'Explain with AI')}</button>` : '';
-    const acts = [checkAction(c), aiBtn].filter(Boolean).join('');
-    return `<div class="check"><div>${sevChip(c.sev)}</div><div><b>${esc(T.t)}</b><p>${esc(T.d)}</p>${acts ? `<div class="row" style="margin-top:8px">${acts}</div>` : ''}${exHtml}</div></div>`;
+    const formOpen = S.ui.ackOpen === c.id;
+    const acts = [formOpen ? '' : ackBox(c), checkAction(c), aiBtn].filter(Boolean).join('');
+    const handled = BLOCKING.includes(c.sev) && ackFor(c, S.ectx.customer, S.ectx.from, S.ectx.to);
+    return `<div class="check ${handled ? 'is-handled' : ''}"><div>${sevChip(c.sev)}</div><div><b>${esc(T.t)}</b><p>${esc(T.d)}</p>${acts ? `<div class="row" style="margin-top:8px">${acts}</div>` : ''}${formOpen ? ackBox(c) : ''}${exHtml}</div></div>`;
+  }
+  // Quick answers, so marking a check as handled is two clicks.
+  const QUICK = {
+    excluded: [['Typen förbrukar inget drivmedel för kunden', 'This type uses no fuel for the customer'], ['Interna poster, inga transporter', 'Internal entries, not transports']],
+    negatives: [['Krediteringarna är prisjusteringar', 'The credits are price adjustments'], ['Kontrollerat mot fakturorna', 'Checked against the invoices']],
+    hvoEvidence: [['Hållbarhetsbesked finns från leverantören', 'The supplier has issued a sustainability statement'], ['De inhyrda åkerierna har intygat HVO100', 'The hired hauliers have confirmed HVO100']],
+    tonnage: [['Kunden vill ha tonnage som tidigare', 'The customer wants tonnage as before'], ['Stämmer med Excel-rapporten', 'Matches the Excel report']],
+    distance: [['Avstånd saknas i ordersystemet för de raderna', 'The order system has no distance for those rows']],
+    factorAge: [['Faktorn är kontrollerad för perioden', 'The factor is checked for the period']],
+    parity: [['Skillnaden är förklarad', 'The difference is explained']]
+  };
+  const quickFor = (c) => (QUICK[/^excluded-/.test(c.id) ? 'excluded' : c.id] || []).concat([['Kontrollerat, stämmer', 'Checked, correct']]);
+  function ackBox(c) {
+    if (!BLOCKING.includes(c.sev)) return '';
+    const e = S.ectx, a = ackFor(c, e.customer, e.from, e.to);
+    if (a) return `<div class="handled">${icon('check')}<div><b>${L('Hanterad', 'Handled')}:</b> ${esc(a.note)}<br><span class="tiny muted">${esc(whoText(a))}${isFleet(c) ? ' · ' + L('gäller alla kunder i perioden', 'applies to every customer in the period') : ''}</span></div><button class="btn ghost small" data-act="ackUndo" data-id="${esc(c.id)}">${L('Ångra', 'Undo')}</button></div>`;
+    if (c.sev === 'critical' && EMP()) return `<p class="small" style="color:var(--critical-text)">${L('Det här kan bara chefen godkänna.', 'Only the supervisor can accept this.')}</p>`;
+    if (S.ui.ackOpen !== c.id) return `<button class="btn small" data-act="ackOpen" data-id="${esc(c.id)}">${icon('check')}${EMP() ? L('Det stämmer', 'This is correct') : L('Markera som hanterad', 'Mark as handled')}</button>`;
+    const i = S.lang === 'en' ? 1 : 0;
+    return `<div class="ackform">
+      <label class="field"><span>${EMP() ? L('Kort kommentar till chefen', 'A short comment for the supervisor') : L('Kommentar, sparas med rapporten', 'Comment, kept with the report')}</span><input type="text" id="ack-${esc(c.id)}" data-ack="${esc(c.id)}" value="${esc(S.ui.ackText[c.id] || '')}" placeholder="${L('Varför stämmer det?', 'Why is it correct?')}" maxlength="240" autocomplete="off"></label>
+      <div class="quick">${quickFor(c).map((q) => `<button type="button" class="chip" data-act="ackPick" data-id="${esc(c.id)}" data-q="${esc(q[i])}">${esc(q[i])}</button>`).join('')}</div>
+      ${isFleet(c) ? `<p class="tiny muted">${L('Gäller alla kunder i perioden, så du svarar bara en gång.', 'Applies to every customer in the period, so you only answer once.')}</p>` : ''}
+      <div class="row"><button class="btn primary small" data-act="ackSave" data-id="${esc(c.id)}">${L('Spara', 'Save')}</button><button class="btn ghost small" data-act="ackCancel">${L('Avbryt', 'Cancel')}</button></div></div>`;
   }
 
   // ----- report -----
@@ -2072,7 +2300,7 @@ ${JSON.stringify(aiContext(S.lang))}`;
         <div><div class="k">${R('Intensitet', 'Intensity')}</div><div class="v">${n(t.kgPerTonne, 2)} <small>kg CO₂e/t</small></div></div>
         <div><div class="k">${R('Förnybart drivmedel', 'Renewable fuel')}</div><div class="v">${pc(t.renewableShare)} <small>${R('av energin', 'of energy')}</small></div></div>
       </div>
-      <p id="doc-narr">${esc(m.narrative)}</p>${m.aiNarrative ? `<span class="ai-mark">${icon('spark')}${R('AI-text, granskad före låsning', 'AI text, reviewed before locking')}</span>` : ''}
+      <p id="doc-narr">${esc(m.narrative)}</p>${m.aiNarrative ? (EMP() ? `<span class="ai-mark">${R('Textförslag, granskat före godkännande', 'Suggested text, reviewed before approval')}</span>` : `<span class="ai-mark">${icon('spark')}${R('AI-text, granskad före låsning', 'AI text, reviewed before locking')}</span>`) : ''}
       <h3>${R('Klimatpåverkan per fordonstyp', 'Climate impact by vehicle type')}</h3>
       <div style="overflow-x:auto"><table><thead><tr><th>${R('Resurstyp', 'Vehicle type')}</th><th>${R('Drivmedel', 'Fuel')}</th><th class="r">${R('Volym (l)', 'Volume (l)')}</th><th class="r">${R('Faktor kg/l', 'Factor kg/l')}</th><th class="r">kg CO₂e WTW</th>${cost ? `<th class="r">${R('Kundbelopp (kr)', 'Amount (SEK)')}</th><th class="r">${R('Andel', 'Share')}</th><th class="r">${R('Pris kr/l', 'SEK/l')}</th>` : ''}</tr></thead>
       <tbody>${rows}</tbody><tfoot><tr><td>${R('Totalt', 'Total')}</td><td></td><td class="r">${n(t.liters)}</td><td></td><td class="r">${n(t.kgWtw, 1)}</td>${cost ? `<td class="r">${n(t.amount)}</td><td></td><td></td>` : ''}</tr></tfoot></table></div>
@@ -2090,10 +2318,8 @@ ${JSON.stringify(aiContext(S.lang))}`;
     if (!S.result.rows.length) return `<div class="card empty"><h3>${L('Inget att rapportera för vald kund och period', 'Nothing to report for this customer and period')}</h3></div>`;
     ensureHashes();
     const m = modelFor(s.reportLang, false);
-    const db = S.caps.db, st = reportStatus();
-    const lockBox = !db ? `<p class="small muted">${L('Låsning och arkiv kräver att sidan är öppen i Claude med inloggning.', 'Locking and the archive need the page open in Claude, signed in.')}</p>`
-      : S.ui.confirmLock ? `<div class="confirm"><b>${L(`Lås som version ${(st.version || 0) + 1}?`, `Lock as version ${(st.version || 0) + 1}?`)}</b><span>${L('Siffror, faktorer och underlagets kontrollsumma sparas i arkivet och kan inte ändras. En ny beräkning blir en ny version.', 'Figures, factors and the input checksum are stored in the archive and cannot change. A new calculation becomes a new version.')}</span><div class="row"><button class="btn primary small" data-act="lockGo" ${S.ui.busy ? 'disabled' : ''}>${icon('lock')}${L('Lås rapporten', 'Lock the report')}</button><button class="btn small" data-act="lockCancel">${L('Avbryt', 'Cancel')}</button></div></div>`
-      : `<button class="btn" data-act="lockAsk" ${st.status === 'locked' ? 'disabled' : ''}>${icon('lock')}${st.status === 'locked' ? L(`Låst som v${st.version}`, `Locked as v${st.version}`) : L('Lås och arkivera', 'Lock and archive')}</button>`;
+    const db = S.caps.db;
+    const lockBox = approvalPanel();
     const fuelOpt = (cls, sel) => Object.entries(c.fuels).filter(([, f]) => f.shareCol === cls).map(([k, f]) => `<option value="${esc(k)}" ${k === sel ? 'selected' : ''}>${esc(f.label[S.lang] || f.label.sv)} · ${nf(f.wtw, 3)}</option>`).join('');
     return `
     <div class="vhead"><div><h1>${L('Kundrapport', 'Customer report')}</h1><p>${L('Förhandsvisning av det kunden får. Klicka på en rad i tabellen för att se exakt hur den räknats.', 'Preview of what the customer receives. Click a row in the table to see exactly how it was calculated.')}${S.settings.reportLang !== S.lang ? ' ' + L('Rapporten är på engelska; byt under Rapportens språk.', 'The report itself is in Swedish; change it under Report language.') : ''}</p></div></div>
@@ -2126,8 +2352,7 @@ ${JSON.stringify(aiContext(S.lang))}`;
           ${!S.caps.downloads ? `<p class="tiny muted">${L('Nedladdning fungerar när sidan är öppen i Claude.', 'Downloads work when the page is open in Claude.')}</p>` : ''}
           <p class="tiny muted">${L('Excel-filen har samma flik "Rapport" som idag, med formler, plus underlag, metod och kontroller.', 'The Excel file has the same "Rapport" sheet as today, with formulas, plus source lines, method and checks.')}</p>
         </div>
-        <div class="panel-sec"><h4>${L('Lås och arkivera', 'Lock and archive')}</h4>${lockBox}
-          ${S.checks.some((x) => x.sev === 'serious' || x.sev === 'critical') ? `<p class="small" style="color:var(--serious-text)">${L('Det finns allvarliga kontroller kvar.', 'There are serious checks left.')} <a href="#kontroller">${L('Granska', 'Review')}</a></p>` : ''}
+        <div class="panel-sec"><h4>${L('Godkänn och lås', 'Approve and lock')}</h4>${lockBox}
           ${S.dirtyShared && db ? `<button class="btn ghost small" data-act="saveShared">${L('Spara inställningarna som gemensam standard', 'Save settings as the shared default')}</button>` : ''}
         </div>
       </div>
@@ -2135,10 +2360,130 @@ ${JSON.stringify(aiContext(S.lang))}`;
     </div>`;
   }
 
+  // Supervisor: who submitted, what was handled and why, what is still open, and the lock itself.
+  function approvalPanel() {
+    const db = S.caps.db, st = reportStatus(), open = openNow(), e = S.ectx;
+    const rv = reviewOf(e.customer, e.from, e.to);
+    const sub = rv.submitted && Math.abs(rv.submitted.kg - S.result.totals.kgWtw) < 0.01 ? rv.submitted : null;
+    const handled = handledNow();
+    let html = '';
+    if (st.status !== 'locked') {
+      if (sub) html += `<div class="note">${L('Inskickad för godkännande av', 'Submitted for approval by')} <b>${esc(sub.name || roleName(sub.role))}</b>, ${esc(when(sub.at))}.</div>`;
+      else if (rv.returned) html += `<div class="note warn">${L('Skickad tillbaka', 'Sent back')}: ${esc(rv.returned.note)}</div>`;
+    }
+    if (handled.length) html += `<details class="small handled-list"><summary>${handled.length} ${L(handled.length === 1 ? 'hanterad kontroll med kommentar' : 'hanterade kontroller med kommentar', handled.length === 1 ? 'handled check with a comment' : 'handled checks with a comment')}</summary><ul>${handled.map(({ c, a }) => `<li><b>${esc(ct(c).t)}</b>: ${esc(a.note)} <span class="muted">(${esc(whoText(a))})</span></li>`).join('')}</ul></details>`;
+    if (open.length && st.status !== 'locked') html += `<div class="note warn"><b>${L(`${open.length} ${open.length === 1 ? 'kontroll måste' : 'kontroller måste'} hanteras innan rapporten kan låsas`, `${open.length} ${open.length === 1 ? 'check must' : 'checks must'} be handled before the report can be locked`)}</b><ul class="small" style="margin:6px 0 8px;padding-left:18px">${open.map((c) => `<li>${esc(ct(c).t)}</li>`).join('')}</ul><a class="btn small" href="#kontroller">${L('Till kontrollerna', 'Go to the checks')}</a></div>`;
+    if (!db) return html + `<p class="small muted">${L('Låsning och arkiv kräver att sidan är öppen i Claude med inloggning.', 'Locking and the archive need the page open in Claude, signed in.')}</p>`;
+    if (S.ui.confirmLock && !open.length) return html + `<div class="confirm"><b>${L(`Godkänn och lås som version ${(st.version || 0) + 1}?`, `Approve and lock as version ${(st.version || 0) + 1}?`)}</b><span>${L('Siffror, faktorer, kommentarer och underlagets kontrollsumma sparas i arkivet och kan inte ändras. En ny beräkning blir en ny version.', 'Figures, factors, comments and the input checksum are stored in the archive and cannot change. A new calculation becomes a new version.')}</span><div class="row"><button class="btn primary small" data-act="lockGo" ${S.ui.busy ? 'disabled' : ''}>${icon('lock')}${L('Godkänn och lås', 'Approve and lock')}</button><button class="btn small" data-act="lockCancel">${L('Avbryt', 'Cancel')}</button></div></div>`;
+    html += `<div class="row"><button class="btn ${open.length || st.status === 'locked' ? '' : 'primary'}" data-act="lockAsk" ${st.status === 'locked' || open.length ? 'disabled' : ''}>${icon('lock')}${st.status === 'locked' ? L(`Låst som v${st.version}`, `Locked as v${st.version}`) : L('Godkänn och lås', 'Approve and lock')}</button>${sub && st.status !== 'locked' && !S.ui.returnOpen ? `<button class="btn ghost small" data-act="returnAsk">${L('Skicka tillbaka', 'Send back')}</button>` : ''}</div>`;
+    if (S.ui.returnOpen) html += `<div class="ackform"><label class="field"><span>${L('Vad behöver ändras?', 'What needs to change?')}</span><input type="text" id="ret-note" value="${esc(S.ui.returnText)}" maxlength="240" autocomplete="off"></label><div class="row"><button class="btn primary small" data-act="returnGo">${L('Skicka tillbaka', 'Send back')}</button><button class="btn ghost small" data-act="returnCancel">${L('Avbryt', 'Cancel')}</button></div></div>`;
+    return html;
+  }
+
+  // ----- employee: work list and guided report -----
+  function stateChip(st) {
+    const n = st.open ? st.open.length : 0;
+    const m = {
+      open: [L(`${n} ${n === 1 ? 'sak' : 'saker'} att titta på`, `${n} ${n === 1 ? 'thing' : 'things'} to look at`), 'open'],
+      ready: [L('Klar att skicka', 'Ready to send'), 'ready'],
+      submitted: [L('Väntar på chefen', 'Waiting for the supervisor'), 'submitted'],
+      approved: [L('Godkänd', 'Approved'), 'approved'],
+      empty: [L('Ingen data i perioden', 'No data in the period'), 'empty']
+    }[st.kind];
+    return `<span class="state ${m[1]}"><span class="dot"></span>${esc(m[0])}</span>`;
+  }
+  function vMine() {
+    const ds = S.dataset, p = periodInfo();
+    const list = ds.customers.map((k) => ({ k, st: customerState(k) })).filter((x) => x.st.kind !== 'empty');
+    const cnt = (k) => list.filter((x) => x.st.kind === k).length;
+    const done = cnt('approved') + cnt('submitted');
+    const day = (w) => when(w && w.at, false);
+    const rows = list.map(({ k, st }) => {
+      const hint = st.kind === 'open' ? st.open.slice(0, 2).map((c) => ct(c).t).join(' · ') + (st.open.length > 2 ? ' …' : '')
+        : st.kind === 'ready' ? L('Allt är kontrollerat', 'Everything is checked')
+        : st.kind === 'submitted' ? L('Skickad', 'Sent') + ' ' + day(st.rv.submitted)
+        : st.kind === 'approved' ? L(`Låst som version ${st.version}`, `Locked as version ${st.version}`) : '';
+      const btn = st.kind === 'open' ? L('Granska', 'Review') : st.kind === 'ready' ? L('Skicka', 'Send') : L('Visa', 'View');
+      return `<div class="work-row ${st.kind}">
+        <div class="work-name"><h3>${esc(custName(k))}</h3><span class="small muted">${L('Kundnr', 'Customer no.')} ${esc(k)}</span></div>
+        <div class="work-kg"><b>${kgText(st.kg)}</b><span class="tiny muted">${L('från källa till hjul', 'well-to-wheel')}</span></div>
+        <div class="work-state">${stateChip(st)}<span class="tiny muted">${esc(hint)}</span></div>
+        <button class="btn ${st.kind === 'open' || st.kind === 'ready' ? 'primary' : ''}" data-act="openCust" data-c="${esc(k)}">${btn}</button></div>`;
+    }).join('');
+    const all = list.length;
+    return `<div class="vhead"><div><h1>${L('Mina rapporter', 'My reports')}</h1><p>${esc(p.uiLabel)} · ${all} ${L(all === 1 ? 'kund' : 'kunder', all === 1 ? 'customer' : 'customers')}. ${L('Underlaget hämtas automatiskt från affärssystemet och allt är redan uträknat. Du behöver inte kopiera något.', 'The data comes straight from the business system and everything is already calculated. You do not need to copy anything.')}</p></div></div>
+      <div class="card progress-card"><div class="row" style="justify-content:space-between"><b>${done === all && all ? L('Klart! Alla rapporter är skickade.', 'Done! Every report is sent.') : L(`${done} av ${all} klara`, `${done} of ${all} done`)}</b><span class="small muted">${cnt('approved')} ${L('godkända', 'approved')} · ${cnt('submitted')} ${L('hos chefen', 'with the supervisor')}</span></div>
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="${all}" aria-valuenow="${done}"><span style="width:${all ? (done / all * 100).toFixed(1) : 0}%"></span></div>
+        <div class="howto"><span><b>1</b>${L('Titta på det som är markerat', 'Look at what is flagged')}</span><span><b>2</b>${L('Skriv en rad till kunden', 'Write a line to the customer')}</span><span><b>3</b>${L('Skicka till chefen', 'Send to the supervisor')}</span></div></div>
+      <div class="work">${rows || `<div class="card empty">${L('Inga kunder med transporter i perioden.', 'No customers with transports in the period.')}</div>`}</div>`;
+  }
+  function empFix(c) {
+    if (c.id === 'tonnage') return checkAction(c);
+    if (c.id === 'hvoEvidence' || c.id === 'price') return `<a class="btn ghost small" href="#kvitton">${L('Lägg in kvitton', 'Add receipts')}</a>`;
+    return '';
+  }
+  function empItem(c) {
+    const t = ct(c), ex = S.ai.explain[c.id], formOpen = S.ui.ackOpen === c.id;
+    const exHtml = ex && ex.t === t.t ? `<div class="ai-box"><span class="ai-tag">${L('Förklaring', 'Explanation')}${ex.live ? ' · ' + L('skriver…', 'writing…') : ''}</span><div id="ai-exp-${esc(c.id)}" class="${ex.live ? 'ai-live' : ''}">${mdLite(ex.text)}</div></div>` : '';
+    const explain = aiReady() && !(ex && ex.t === t.t) ? `<button class="btn ghost small" data-act="aiExplain" data-id="${esc(c.id)}" ${S.ai.busy ? 'disabled' : ''}>${L('Vad betyder det?', 'What does it mean?')}</button>` : '';
+    return `<div class="item"><div class="item-h">${empSev(c.sev)}</div><b>${esc(t.t)}</b><p class="small">${esc(t.d)}</p>${exHtml}
+      <div class="row">${formOpen ? '' : ackBox(c)}${empFix(c)}${explain}</div>${formOpen ? ackBox(c) : ''}</div>`;
+  }
+  function empTextPanel() {
+    const a = S.ai.summary[sumKey()];
+    if (a && a.live) return `<div class="ai-box"><span class="ai-tag">${L('Skriver…', 'Writing…')}</span><div id="ai-sum-live" class="ai-live">${esc(a.text)}</div><div class="row"><button class="btn small" data-act="aiStop">${L('Stoppa', 'Stop')}</button></div></div>`;
+    if (a && a.text) {
+      const stale = a.sig !== reportSig();
+      return `<div class="ai-box">${stale ? `<span class="small" style="color:var(--warning-text)">${L('Siffrorna har ändrats sedan texten skrevs. Skriv om den.', 'The figures changed since this was written. Rewrite it.')}</span>` : ''}
+        <textarea id="ai-sum-edit" rows="7" aria-label="${L('Text till kunden', 'Text for the customer')}">${esc(a.text)}</textarea>
+        <span class="tiny muted">${L('Läs igenom och ändra om du vill. Siffrorna i tabellerna ändras aldrig.', 'Read it through and change it if you like. The figures in the tables never change.')}</span>
+        <div class="row"><button class="btn small" data-act="aiSummary" ${S.ai.busy ? 'disabled' : ''}>${L('Skriv om', 'Rewrite')}</button><button class="btn ghost small" data-act="aiSummaryReset">${L('Använd standardtexten', 'Use the standard text')}</button></div></div>`;
+    }
+    return `<p class="small">${L('Överst i rapporten står en kort sammanfattning. Standardtexten fungerar, men du kan få ett förslag skrivet utifrån just den här kundens siffror.', 'The report opens with a short summary. The standard text works, but you can get a suggestion written from this customer\'s own figures.')}</p>
+      ${aiReady() ? `<div class="row"><button class="btn" data-act="aiSummary" ${S.ai.busy ? 'disabled' : ''}>${L('Skriv texten åt mig', 'Write the text for me')}</button></div>` : ''}`;
+  }
+  function vEmpReport() {
+    const e = S.ectx, p = periodInfo();
+    if (!S.result.rows.length) return `<div class="vhead"><div><a class="back" href="#mina">${icon('back')}${L('Mina rapporter', 'My reports')}</a><h1>${esc(custName(e.customer))}</h1></div></div><div class="card empty"><h3>${L('Inga transporter i perioden', 'No transports in the period')}</h3></div>`;
+    ensureHashes();
+    const m = modelFor(S.settings.reportLang, false);
+    const st = customerState(e.customer), open = openNow(), handled = handledNow();
+    const info = S.checks.filter((c) => c.sev === 'info');
+    const rv = reviewOf(e.customer, e.from, e.to);
+    const locked = st.kind === 'approved', sent = st.kind === 'submitted';
+    const a = S.ai.summary[sumKey()];
+    const step = (n, cls, title, body) => `<section class="step ${cls}"><div class="step-h"><span class="step-n">${cls === 'done' ? icon('check') : n}</span><h3>${title}</h3></div>${body}</section>`;
+    const s1 = open.length
+      ? `<p class="small">${L(`${open.length} ${open.length === 1 ? 'sak' : 'saker'} att titta på innan rapporten kan skickas.`, `${open.length} ${open.length === 1 ? 'thing' : 'things'} to look at before the report can be sent.`)}</p>${open.map(empItem).join('')}`
+      : `<p class="ok-line">${icon('check')}${L('Allt är kontrollerat.', 'Everything is checked.')}</p>`;
+    const extra = (handled.length ? `<details class="small"><summary>${handled.length} ${L(handled.length === 1 ? 'hanterad' : 'hanterade', 'handled')}</summary>${handled.map(({ c }) => `<div class="item">${ackBox(c)}<b class="small">${esc(ct(c).t)}</b></div>`).join('')}</details>` : '')
+      + (info.length ? `<details class="small"><summary>${info.length} ${L(info.length === 1 ? 'sak som är bra att veta' : 'saker som är bra att veta', info.length === 1 ? 'thing that is good to know' : 'things that are good to know')}</summary><ul>${info.map((c) => `<li>${esc(ct(c).t)}</li>`).join('')}</ul></details>` : '');
+    const s3 = locked ? `<p class="ok-line">${icon('check')}${L(`Godkänd och låst som version ${st.version}.`, `Approved and locked as version ${st.version}.`)}</p>`
+      : sent ? `<p class="ok-line">${icon('check')}${L('Skickad till chefen', 'Sent to the supervisor')} ${esc(when(rv.submitted.at, false))}.</p><p class="small muted">${L('Du får tillbaka den om något behöver ändras.', 'It comes back to you if anything needs changing.')}</p>`
+      : open.length ? `<p class="small muted">${L('Knappen blir aktiv när steg 1 är klart.', 'The button turns on when step 1 is done.')}</p><div class="row"><button class="btn primary" disabled>${icon('send')}${L('Skicka till chefen', 'Send to the supervisor')}</button></div>`
+      : `<p class="small">${L('Allt är klart. Chefen tittar igenom och godkänner, sedan låses rapporten och kan skickas till kunden.', 'All done. The supervisor looks it over and approves it; then the report is locked and can go to the customer.')}</p><div class="row"><button class="btn primary" data-act="submit">${icon('send')}${L('Skicka till chefen', 'Send to the supervisor')}</button></div>`;
+    const banner = !locked && !sent && rv.returned ? `<div class="note warn"><b>${L('Tillbaka från chefen', 'Back from the supervisor')}:</b> ${esc(rv.returned.note)}</div>` : '';
+    return `<div class="vhead"><div><a class="back" href="#mina">${icon('back')}${L('Mina rapporter', 'My reports')}</a><h1>${esc(custName(e.customer))}</h1><p>${esc(p.uiLabel)} · <b>${kgText(S.result.totals.kgWtw)}</b> ${L('från källa till hjul', 'well-to-wheel')} · ${stateChip(st)}</p></div></div>
+      ${banner}
+      <div class="grid g-emp">
+        <div class="steps">
+          ${step(1, open.length ? 'current' : 'done', L('Kontrollera', 'Check'), s1 + extra)}
+          ${step(2, a && a.text && !a.live ? 'done' : open.length ? '' : 'current', L('Text till kunden', 'Text for the customer'), empTextPanel())}
+          ${step(3, locked || sent ? 'done' : open.length ? '' : 'current', L('Skicka för godkännande', 'Send for approval'), s3)}
+        </div>
+        <div class="stack">
+          <div class="row preview-bar"><span class="small muted">${L('Så här ser kunden rapporten', 'This is how the customer sees the report')}</span><span class="ctx-spacer"></span>
+            <div class="seg" role="group" aria-label="${L('Rapportens språk', 'Report language')}"><button data-act="rlang" data-v="sv" aria-pressed="${S.settings.reportLang === 'sv'}">Svenska</button><button data-act="rlang" data-v="en" aria-pressed="${S.settings.reportLang === 'en'}">English</button></div>
+            <button class="btn small" data-act="export" data-kind="pdf" ${S.ui.busy ? 'disabled' : ''}>${icon('download')}PDF</button></div>
+          <div class="docwrap">${docHtml(m)}</div>
+        </div>
+      </div>`;
+  }
+
   function vChecks() {
     const by = (s) => S.checks.filter((x) => x.sev === s);
     const sum = ['critical', 'serious', 'warning', 'info', 'ok'].map((s) => `<div class="card tile"><span class="k">${sevChip(s)}</span><span class="v">${by(s).length}</span></div>`).join('');
-    return `<div class="vhead"><div><h1>${L('Kontroller', 'Checks')}</h1><p>${L('Körs automatiskt vid varje beräkning. Allvarliga avvikelser bör vara lösta eller förklarade innan rapporten låses.', 'Run automatically on every calculation. Serious issues should be fixed or explained before the report is locked.')}</p></div></div>
+    return `<div class="vhead"><div><h1>${L('Kontroller', 'Checks')}</h1><p>${L('Körs automatiskt vid varje beräkning. Kritiska, allvarliga och varningar måste vara lösta eller hanterade med en kommentar innan rapporten kan låsas. Kritiska kan bara chefen godkänna.', 'Run automatically on every calculation. Critical, serious and warning checks must be fixed or handled with a comment before the report can be locked. Only the supervisor can accept critical ones.')}</p></div></div>
       <section class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">${sum}</section>
       <div class="card"><div class="checklist">${S.checks.map(checkRow).join('')}</div></div>`;
   }
@@ -2186,15 +2531,15 @@ ${JSON.stringify(aiContext(S.lang))}`;
     const rs = S.rstats, all = allReceipts(), pend = S.receipts.pending;
     const aiOk = !!(S.caps.sample && S.caps.sampleLimits && S.caps.sampleLimits.images);
     const fuelRow = (k, label) => { const p = rs.per[k]; return p ? `<tr><td>${label}</td><td class="r">${nf(p.n)}</td><td class="r">${nf(p.liters)}</td><td class="r">${p.avgPrice ? nf(p.avgPrice, 2) : '–'}</td></tr>` : ''; };
-    const srcChip = (s) => s === 'example' ? `<span class="pill sample">${L('Exempel', 'Example')}</span>` : s === 'ai' ? `<span class="pill">${icon('spark').replace('<svg', '<svg width="12" height="12" style="stroke:currentColor;fill:none;stroke-width:2"')}AI</span>` : `<span class="pill">${s === 'csv' ? L('Fil', 'File') : esc(s)}</span>`;
+    const srcChip = (s) => s === 'example' ? `<span class="pill sample">${L('Exempel', 'Example')}</span>` : s === 'ai' ? (EMP() ? `<span class="pill">${L('Avläst', 'Read')}</span>` : `<span class="pill">${icon('spark').replace('<svg', '<svg width="12" height="12" style="stroke:currentColor;fill:none;stroke-width:2"')}AI</span>`) : `<span class="pill">${s === 'csv' ? L('Fil', 'File') : esc(s)}</span>`;
     const rrow = (r, i, pending) => `<tr><td class="num">${esc(r.date)}</td><td>${esc(r.fuel)}</td><td class="r">${nf(r.liters, 1)}</td><td class="r">${r.amount != null ? nf(r.amount, 2) : '–'}</td><td class="r">${r.amount != null && r.liters ? nf((r.vatIncluded ? r.amount / 1.25 : r.amount) / r.liters, 2) : r.unitPrice != null ? nf(r.unitPrice, 2) : '–'}</td><td>${esc(r.vehicle || '')}</td><td>${esc(r.supplier || '')}</td><td>${srcChip(r.source)}${r.confidence != null ? ` <span class="tiny muted">${pct(r.confidence)}</span>` : ''}</td>${pending ? `<td><button class="btn ghost small" data-act="dropPending" data-i="${i}" aria-label="${L('Ta bort', 'Remove')}">${icon('x')}</button></td>` : ''}</tr>`;
     const head = (pending) => `<thead><tr><th>${L('Datum', 'Date')}</th><th>${L('Drivmedel', 'Fuel')}</th><th class="r">${L('Liter', 'Litres')}</th><th class="r">${L('Belopp', 'Amount')}</th><th class="r">kr/l ${L('exkl. moms', 'excl. VAT')}</th><th>${L('Fordon', 'Vehicle')}</th><th>${L('Leverantör', 'Supplier')}</th><th>${L('Källa', 'Source')}</th>${pending ? '<th></th>' : ''}</tr></thead>`;
     return `<div class="vhead"><div><h1>${L('Kvitton', 'Receipts')}</h1><p>${L('Tankkvitton gör beräkningen bättre på tre sätt: priset per liter räknas fram per period, drivmedelsmixen bygger på det som faktiskt tankats, och HVO-påståendet har ett underlag.', 'Fuel receipts improve the calculation three ways: the price per litre is derived per period, the fuel mix is based on what was actually bought, and the HVO claim has evidence.')}</p></div></div>
     <section class="grid g-2">
       <div class="card stack"><h3>${L('Läs in kvitton', 'Load receipts')}</h3>
-        <label class="drop" data-drop="receipts" for="file-receipts">${icon('upload')}<b>${L('Släpp kvitton här', 'Drop receipts here')}</b><span class="small muted">${L('CSV eller Excel från drivmedelskortet läses direkt. Bilder och PDF läses av Claude.', 'CSV or Excel from the fuel card is read directly. Images and PDFs are read by Claude.')}</span><span class="btn small">${L('Välj filer', 'Choose files')}</span><input type="file" id="file-receipts" accept=".csv,.xlsx,.xls,.txt,.pdf,image/jpeg,image/png,image/webp" multiple></label>
+        <label class="drop" data-drop="receipts" for="file-receipts">${icon('upload')}<b>${L('Släpp kvitton här', 'Drop receipts here')}</b><span class="small muted">${LA('CSV eller Excel från drivmedelskortet läses direkt. Bilder och PDF läses av Claude.', 'CSV or Excel from the fuel card is read directly. Images and PDFs are read by Claude.', 'Fotografera kvittot eller släpp en PDF, CSV eller Excel-fil från drivmedelskortet.', 'Take a photo of the receipt or drop a PDF, CSV or Excel file from the fuel card.')}</span><span class="btn small">${L('Välj filer', 'Choose files')}</span><input type="file" id="file-receipts" accept=".csv,.xlsx,.xls,.txt,.pdf,image/jpeg,image/png,image/webp" multiple></label>
         <div class="row"><button class="btn small" data-act="receiptTemplate">${icon('download')}${L('Mall (CSV)', 'Template (CSV)')}</button><button class="btn ghost small" data-act="exampleReceipts">${L('Visa med exempelkvitton', 'Try with example receipts')}</button></div>
-        <p class="small ${aiOk ? '' : 'muted'}">${icon('spark').replace('<svg', '<svg width="14" height="14" style="stroke:var(--accent-text);fill:none;stroke-width:2;vertical-align:-2px"')} ${aiOk ? L('AI-avläsning är på. Claude läser datum, drivmedel, liter, belopp och moms; du granskar innan något sparas.', 'AI reading is on. Claude reads date, fuel, litres, amount and VAT; you review before anything is saved.') : L('AI-avläsning av bilder och PDF fungerar när sidan är öppen i Claude.', 'AI reading of images and PDFs works when the page is open in Claude.')}</p>
+        <p class="small ${aiOk ? '' : 'muted'}">${EMP() ? '' : icon('spark').replace('<svg', '<svg width="14" height="14" style="stroke:var(--accent-text);fill:none;stroke-width:2;vertical-align:-2px"')} ${aiOk ? LA('AI-avläsning är på. Claude läser datum, drivmedel, liter, belopp och moms; du granskar innan något sparas.', 'AI reading is on. Claude reads date, fuel, litres, amount and VAT; you review before anything is saved.', 'Datum, drivmedel, liter, belopp och moms fylls i automatiskt. Du kontrollerar innan något sparas.', 'Date, fuel, litres, amount and VAT are filled in for you. You check before anything is saved.') : LA('AI-avläsning av bilder och PDF fungerar när sidan är öppen i Claude.', 'AI reading of images and PDFs works when the page is open in Claude.', 'Avläsning av foton och PDF är inte påslagen här.', 'Reading photos and PDFs is not switched on here.')}</p>
         ${S.ui.aiState ? `<div class="note ${S.ui.aiState === 'error' ? 'warn' : S.ui.aiState === 'done' ? 'good' : ''}">${esc(S.ui.aiMsg)}${S.ui.aiState === 'busy' ? ` <button class="btn ghost small" data-act="aiStop">${L('Stoppa', 'Stop')}</button>` : ''}</div>` : ''}
       </div>
       <div class="card stack"><h3>${L('Perioden enligt kvitton', 'The period according to receipts')}</h3>
@@ -2391,19 +2736,19 @@ FROM dbo.Resurstyp;`;
     const body = st === 'loading' ? `<div class="empty">${L('Hämtar arkivet…', 'Loading the archive…')}</div>`
       : st === 'slow' ? `<div class="empty">${L('Arkivet svarar inte än. Det visas när anslutningen är tillbaka.', 'The archive is not answering yet. It will show when the connection is back.')}</div>`
       : st === 'error' ? `<div class="empty">${L('Arkivet kunde inte läsas.', 'The archive could not be read.')}</div>`
-      : !rows.length ? `<div class="empty">${icon('lock').replace('<svg', '<svg width="28" height="28" style="stroke:var(--muted);fill:none;stroke-width:1.5"')}<b>${L('Inga låsta rapporter ännu', 'No locked reports yet')}</b><span>${L('Lås en rapport under Kundrapport så hamnar den här med version och verifieringskod.', 'Lock a report under Customer report and it lands here with version and verification code.')}</span><a class="btn small" href="#rapport">${L('Till kundrapporten', 'Go to the customer report')}</a></div>`
+      : !rows.length ? `<div class="empty">${icon('lock').replace('<svg', '<svg width="28" height="28" style="stroke:var(--muted);fill:none;stroke-width:1.5"')}<b>${L('Inga låsta rapporter ännu', 'No locked reports yet')}</b><span>${EMP() ? L('När chefen har godkänt en rapport hamnar den här, låst och med verifieringskod.', 'When the supervisor approves a report it lands here, locked and with a verification code.') : L('Lås en rapport under Kundrapport så hamnar den här med version och verifieringskod.', 'Lock a report under Customer report and it lands here with version and verification code.')}</span><a class="btn small" href="#${EMP() ? 'mina' : 'rapport'}">${EMP() ? L('Till mina rapporter', 'Go to my reports') : L('Till kundrapporten', 'Go to the customer report')}</a></div>`
       : `<div class="tablewrap"><table><thead><tr><th>${L('Rapport', 'Report')}</th><th>${L('Kund', 'Customer')}</th><th>${L('Period', 'Period')}</th><th class="r">kg CO₂e</th><th>${L('Låst', 'Locked')}</th><th>${L('Verifieringskod', 'Verification code')}</th><th></th></tr></thead><tbody>
         ${rows.map((a) => { const v = S.ui.verify[a.id]; return `<tr><td><b style="font-weight:600">${esc(a.reportId)}</b> <span class="pill locked" style="padding:0 7px">v${esc(a.version)}</span>${a.dataset && a.dataset.sample ? ` <span class="pill sample" style="padding:0 7px">${L('exempeldata', 'sample data')}</span>` : ''}</td><td>${esc(a.customerName)}</td><td>${esc(a.period)}<br><span class="tiny muted">${esc(a.from)} – ${esc(a.to)}</span></td><td class="r">${nf(a.totals && a.totals.kgWtw, 1)}</td><td class="small">${esc((a.createdAt || '').replace('T', ' ').slice(0, 16))}<br><span class="muted">${esc(a.createdBy ? (S.names[a.createdBy] || L('Kollega', 'Colleague')) : '–')}</span></td><td class="code" title="${esc(a.reportHash)}">${esc(String(a.reportHash || '').slice(0, 12))}…</td>
           <td><div class="row"><button class="btn small" data-act="verify" data-id="${esc(a.id)}">${L('Verifiera', 'Verify')}</button><button class="btn ghost small" data-act="openArchived" data-id="${esc(a.id)}">${L('Visa', 'View')}</button></div>${v ? `<div style="margin-top:6px">${sevChip(v.sev)} <span class="small">${esc(v.t)}</span></div>` : ''}</td></tr>`; }).join('')}</tbody></table></div>`;
     return `<div class="vhead"><div><h1>${L('Arkiv', 'Archive')}</h1><p>${L('Låsta rapporter med version, beräkningsunderlag och kontrollsumma. Verifiera jämför dagens underlag med det som låstes, till exempel inför revision.', 'Locked reports with version, calculation basis and checksum. Verify compares today\'s data with what was locked, for example before an audit.')}</p></div></div><div class="card">${body}</div>`;
   }
 
-  const VIEW_FNS = { oversikt: vOverview, rapport: vReport, kontroller: vChecks, assistent: vAssistant, data: vData, kvitton: vReceipts, faktorer: vFactors, regelverk: vRules, automatik: vAutomation, arkiv: vArchive };
+  const VIEW_FNS = { mina: vMine, oversikt: vOverview, rapport: () => (EMP() ? vEmpReport() : vReport()), kontroller: vChecks, assistent: vAssistant, data: vData, kvitton: vReceipts, faktorer: vFactors, regelverk: vRules, automatik: vAutomation, arkiv: vArchive };
   function render() {
     const fid = document.activeElement && document.activeElement.id;
     ensureHashes();
     renderNav(); renderCtx();
-    $('#view').innerHTML = (VIEW_FNS[S.view] || vOverview)();
+    $('#view').innerHTML = (VIEW_FNS[S.view] || VIEW_FNS[navFor()[0][0]])();
     if (fid) { const el = document.getElementById(fid); if (el && el !== document.activeElement) try { el.focus({ preventScroll: true }); } catch (e) { /* ignore */ } }
   }
   let softT = null;
@@ -2437,6 +2782,8 @@ FROM dbo.Resurstyp;`;
       html = `<div class="row" style="justify-content:space-between;align-items:flex-start"><div><h4>${L('Låst rapport', 'Locked report')}</h4><h2>${esc(a.reportId)} · v${esc(a.version)}</h2><p class="muted small">${esc(a.customerName)} · ${esc(a.from)} – ${esc(a.to)}</p></div><button class="btn ghost" data-act="closeDrawer" aria-label="${L('Stäng', 'Close')}">${icon('x')}</button></div>
         <dl class="kv"><dt>kg CO₂e WTW</dt><dd>${nf(a.totals.kgWtw, 2)}</dd><dt>kg CO₂e TTW</dt><dd>${nf(a.totals.kgTtw, 2)}</dd><dt>${L('Liter', 'Litres')}</dt><dd>${nf(a.totals.liters, 1)}</dd><dt>${L('Ton gods', 'Tonnes')}</dt><dd>${nf(a.totals.tonnes, 1)}</dd><dt>${L('Pris', 'Price')}</dt><dd>HVO ${nf(a.prices && a.prices.hvo, 2)} · diesel ${nf(a.prices && a.prices.diesel, 2)} kr/l</dd><dt>${L('HVO-andel', 'HVO share')}</dt><dd>${pct(a.hvoPct || 0)}</dd><dt>${L('Underlag', 'Dataset')}</dt><dd>${esc(a.dataset && a.dataset.name)} (${nf(a.dataset && a.dataset.rows)} ${L('rader', 'rows')})</dd><dt>${L('Rapportens SHA-256', 'Report SHA-256')}</dt><dd class="code">${esc(a.reportHash)}</dd><dt>${L('Underlagets SHA-256', 'Input SHA-256')}</dt><dd class="code">${esc(a.inputHash)}</dd></dl>
         <h3>${L('Rader', 'Rows')}</h3><div class="tablewrap"><table><thead><tr><th>${L('Resurstyp', 'Vehicle type')}</th><th>${L('Drivmedel', 'Fuel')}</th><th class="r">${L('Liter', 'Litres')}</th><th class="r">${L('Faktor', 'Factor')}</th><th class="r">kg CO₂e</th></tr></thead><tbody>${(a.rows || []).map((r) => `<tr><td>${esc(r.name)}</td><td>${esc(r.fuel)}</td><td class="r">${nf(r.liters, 0)}</td><td class="r">${nf(r.ef, 3)}</td><td class="r">${nf(r.kgWtw, 1)}</td></tr>`).join('')}</tbody></table></div>
+        ${(a.handled || []).length ? `<h3>${L('Hanterade kontroller', 'Handled checks')}</h3><ul class="small">${a.handled.map((x) => `<li><b>${esc(S.lang === 'en' ? x.tEn || x.t : x.t)}</b>: ${esc(x.note)} <span class="muted">(${esc(whoText(x))})</span></li>`).join('')}</ul>` : ''}
+        ${a.submitted ? `<p class="small muted">${L('Inskickad av', 'Submitted by')} ${esc(whoText(a.submitted))} · ${L('godkänd av', 'approved by')} ${esc(a.approvedByName || roleName(a.approvedRole))}</p>` : ''}
         ${(a.openChecks || []).length ? `<h3>${L('Öppna kontroller vid låsning', 'Open checks when locked')}</h3><ul class="small">${a.openChecks.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}`;
     }
     const had = !!root.firstChild;
@@ -2463,6 +2810,31 @@ FROM dbo.Resurstyp;`;
   // ---------- events ----------
   const actions = {
     lang: (el) => { S.lang = el.dataset.v; store.set('lang', S.lang); render(); },
+    mode: (el) => {
+      S.mode = el.dataset.v === 'supervisor' ? 'supervisor' : 'employee'; store.set('mode', S.mode);
+      S.ui.ackOpen = ''; S.ui.confirmLock = false; S.ui.returnOpen = false;
+      if (allowed(S.view)) render(); else location.hash = navFor()[0][0];
+    },
+    openCust: (el) => {
+      S.ctx.customer = el.dataset.c; S.ui.confirmLock = false; S.ui.ackOpen = ''; S.ai.chat = []; S.ai.explain = {};
+      recompute();
+      if (location.hash === '#rapport') { render(); window.scrollTo(0, 0); } else location.hash = 'rapport';
+    },
+    ackOpen: (el) => { S.ui.ackOpen = el.dataset.id; render(); const i = document.getElementById('ack-' + el.dataset.id); if (i) i.focus(); },
+    ackPick: (el) => { S.ui.ackText[el.dataset.id] = el.dataset.q; const i = document.getElementById('ack-' + el.dataset.id); if (i) { i.value = el.dataset.q; i.focus(); } },
+    ackCancel: () => { S.ui.ackOpen = ''; render(); },
+    ackSave: (el) => {
+      const id = el.dataset.id, c = S.checks.find((x) => x.id === id); if (!c) return;
+      const i = document.getElementById('ack-' + id), note = String((i && i.value) || S.ui.ackText[id] || '').trim();
+      if (note.length < 3) { toast(L('Skriv en kort kommentar eller välj ett av förslagen.', 'Write a short comment or pick one of the suggestions.')); if (i) i.focus(); return; }
+      S.ui.ackOpen = ''; delete S.ui.ackText[id];
+      setAck(c, note);
+    },
+    ackUndo: (el) => clearAck(el.dataset.id),
+    submit: () => submitReport(),
+    returnAsk: () => { S.ui.returnOpen = true; render(); const i = document.getElementById('ret-note'); if (i) i.focus(); },
+    returnCancel: () => { S.ui.returnOpen = false; render(); },
+    returnGo: () => { const i = document.getElementById('ret-note'); const note = String((i && i.value) || '').trim(); if (note.length < 3) { toast(L('Skriv vad som behöver ändras.', 'Write what needs to change.')); return; } returnReport(note); },
     rlang: (el) => { S.settings.reportLang = el.dataset.v; markDirty(); render(); },
     export: (el) => doExport(el.dataset.kind),
     chartTable: (el) => { S.ui.chartTable[el.dataset.id] = !S.ui.chartTable[el.dataset.id]; render(); },
@@ -2470,7 +2842,7 @@ FROM dbo.Resurstyp;`;
     traceAll: () => { S.drawer.all = true; renderDrawer(); },
     closeDrawer: () => { S.drawer = null; renderDrawer(); },
     tonnage: (el) => { S.ctx.tonnageBasis = el.dataset.v; markDirty(); recompute(); render(); toast(el.dataset.v === 'invoiced' ? L('Tonnage räknas nu bara på fakturerade transporter.', 'Tonnage now counts invoiced transports only.') : L('Tonnage räknas som i Excel.', 'Tonnage counts as in Excel.')); },
-    lockAsk: () => { S.ui.confirmLock = true; render(); },
+    lockAsk: () => { if (openNow().length) return; S.ui.confirmLock = true; render(); },
     lockCancel: () => { S.ui.confirmLock = false; render(); },
     lockGo: () => lockReport(),
     saveShared: () => saveShared(),
@@ -2509,11 +2881,15 @@ FROM dbo.Resurstyp;`;
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && S.drawer) { S.drawer = null; renderDrawer(); }
     if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('tr[data-act]')) { e.preventDefault(); actions[e.target.dataset.act](e.target); }
+    if (e.key === 'Enter' && e.target.dataset && e.target.dataset.ack) { e.preventDefault(); actions.ackSave({ dataset: { id: e.target.dataset.ack } }); }
+    if (e.key === 'Enter' && e.target.id === 'ret-note') { e.preventDefault(); actions.returnGo(); }
   });
   let searchT = null;
   document.addEventListener('input', (e) => {
     const t = e.target;
     if (t.id === 'r-hvopct') { const v = $('#hvopct-val'); if (v) v.textContent = pct(Number(t.value) / 100); }
+    if (t.dataset && t.dataset.ack) S.ui.ackText[t.dataset.ack] = t.value;
+    if (t.id === 'ret-note') S.ui.returnText = t.value;
     if (t.id === 'd-search') { S.ui.dSearch = t.value; S.ui.dPage = 0; clearTimeout(searchT); searchT = setTimeout(() => { $('#dtable').innerHTML = dataTable(); }, 150); }
     if (t.id === 'rt-search') { S.ui.rtSearch = t.value; clearTimeout(searchT); searchT = setTimeout(render, 250); }
   });
@@ -2584,7 +2960,7 @@ FROM dbo.Resurstyp;`;
   // ---------- routing & boot ----------
   function route() {
     const h = (location.hash || '').replace('#', '');
-    S.view = VIEW_FNS[h] ? h : 'oversikt';
+    S.view = VIEW_FNS[h] && allowed(h) ? h : navFor()[0][0];
     S.drawer = null; renderDrawer();
     render();
     window.scrollTo(0, 0);
@@ -2592,7 +2968,7 @@ FROM dbo.Resurstyp;`;
   window.addEventListener('hashchange', route);
   loadSample();
   recompute();
-  S.view = VIEW_FNS[(location.hash || '').replace('#', '')] ? location.hash.slice(1) : 'oversikt';
+  { const h = (location.hash || '').replace('#', ''); S.view = VIEW_FNS[h] && allowed(h) ? h : navFor()[0][0]; }
   render();
   initCaps();
 })();

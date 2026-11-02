@@ -41,12 +41,27 @@ appears all at once instead of being typed out, that is the tunnel, and nothing 
 
 ## What the demo shows
 
+The switch at the bottom left picks who is using the portal. **Medarbetare** (employee) is for the person who
+prepares the reports; **Chef** (supervisor) approves and locks them. Open http://127.0.0.1:3000/?reset before a
+demo to start from scratch.
+
+**Employee mode** is deliberately simple and never mentions AI:
+
+| Where | What happens |
+| --- | --- |
+| Mina rapporter | Every customer for the period, already calculated, with what needs a look |
+| Rapport | Three steps: 1 handle the flagged checks (fix, or "Det stämmer" + a short comment; fleet-wide ones are answered once for all customers), 2 "Skriv texten åt mig", 3 "Skicka till chefen". The customer report is shown beside the steps |
+| Kvitton | Drop a photo or PDF of a fuel receipt; date, fuel, litres and amount are filled in for review |
+| Godkända | Approved, locked reports |
+
+**Supervisor mode** is the full portal. The menu starts with the report, then the checks, then the overview:
+
 | Where | What happens | AI? |
 | --- | --- | --- |
+| Kundrapport | Who submitted it, every handled check with its comment, **Godkänn och lås** or **Skicka tillbaka**. A report cannot be locked while a critical, serious or warning check is open; only the supervisor can accept a critical one. **Skriv sammanfattning med AI**, and PDF/Excel/CSV/JSON export | Summary text only |
 | Översikt | Key figures, emissions by vehicle type and month, click a bar to trace it to order lines | No: fixed calculation |
 | Data | Drop the customer's own Milj.xlsx; the portal reads its Rapport sheet and shows **Matchar Excel** | No |
-| Kontroller | 10 automatic data checks; **Förklara med AI** explains one in plain Swedish with actions | Yes |
-| Kundrapport | **Skriv sammanfattning med AI** writes the summary from the figures; editable; PDF/Excel/CSV/JSON export | Yes (text only) |
+| Kontroller | 10 automatic data checks, each fixed or marked as handled with a comment; **Förklara med AI** explains one in plain Swedish with actions | Yes |
 | AI-assistent | Ask questions about the report; answers use only the report's data | Yes |
 | Kvitton | Drop a photo or PDF of a fuel receipt; Claude reads date, fuel, litres, amount for review | Yes |
 

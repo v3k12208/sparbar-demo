@@ -52,7 +52,7 @@ const ai = (port, body) => fetch(`http://127.0.0.1:${port}/api/ai`, { method: 'P
 
     // mock mode streams a labelled demo answer
     const r4 = await ai(4602, { mode: 'text', stream: true, input: 'Du skriver sammanfattningen i en klimatrapport som ...' });
-    assert.match(await r4.text(), /Demoläge/);
+    assert.match(await r4.text(), /Demotext|Demoläge/);
 
     // static files, and no way out of public/
     const idx = await fetch('http://127.0.0.1:4602/');

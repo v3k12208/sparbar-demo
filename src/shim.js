@@ -12,6 +12,11 @@
 
   // ---------- db (localStorage) ----------
   const KEY = 'sparbar-demo-db';
+  // http://127.0.0.1:3000/?reset starts the demo from scratch: no handled checks, no locked reports, employee mode.
+  if (/[?&]reset\b/.test(location.search)) {
+    try { Object.keys(localStorage).filter((k) => k === KEY || k.indexOf('sparbar.') === 0).forEach((k) => localStorage.removeItem(k)); } catch (e) { /* storage blocked */ }
+    history.replaceState(null, '', location.pathname + location.hash);
+  }
   let data = {};
   try { data = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { data = {}; }
   const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { /* storage full or blocked: keep in memory */ } };

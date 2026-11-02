@@ -124,12 +124,12 @@ async function callClaude(body, res, signal) {
 // ---------- mock mode (no API key) ----------
 const MOCK = {
   sv: {
-    summary: 'Under perioden utförde vi transporterna åt er med i huvudsak lastväxlare och kranbilar. Klimatpåverkan från källa till hjul framgår av rapportens nyckeltal, och fordonen körde på HVO100.\n\nSiffrorna kan användas direkt i er klimatredovisning under Scope 3, kategori 4. [Demoläge: lägg in en API-nyckel för att låta Claude skriva texten utifrån era siffror.]',
+    summary: 'Under perioden utförde vi transporterna åt er med i huvudsak lastväxlare och kranbilar. Klimatpåverkan från källa till hjul framgår av rapportens nyckeltal, och fordonen körde på HVO100.\n\nSiffrorna kan användas direkt i er klimatredovisning under Scope 3, kategori 4. [Demotext: med en API-nyckel skrivs texten utifrån era egna siffror.]',
     explain: 'Kontrollen visar en avvikelse i underlaget som påverkar rapportens siffror.\n- Kontrollera raderna bakom kontrollen.\n- Rätta i källsystemet eller justera inställningen.\n- Kör beräkningen igen innan rapporten låses.\n[Demoläge utan API-nyckel.]',
     chat: 'Det här är ett demosvar. Med en API-nyckel svarar Claude utifrån rapportens siffror, till exempel vilka fordonstyper som står för mest utsläpp. [Demoläge utan API-nyckel.]'
   },
   en: {
-    summary: 'During the period we carried out your transports mainly with hook-lift trucks and crane trucks. The well-to-wheel climate impact is shown in the key figures, and the vehicles ran on HVO100.\n\nThe figures can be used directly in your GHG accounts under Scope 3, Category 4. [Demo mode: add an API key to let Claude write this from your figures.]',
+    summary: 'During the period we carried out your transports mainly with hook-lift trucks and crane trucks. The well-to-wheel climate impact is shown in the key figures, and the vehicles ran on HVO100.\n\nThe figures can be used directly in your GHG accounts under Scope 3, Category 4. [Demo text: with an API key this is written from your own figures.]',
     explain: 'The check points to an irregularity in the data that affects the report.\n- Look at the rows behind the check.\n- Fix the source system or adjust the setting.\n- Recalculate before locking the report.\n[Demo mode without an API key.]',
     chat: 'This is a demo answer. With an API key, Claude answers from the report\'s figures, for example which vehicle types cause the most emissions. [Demo mode without an API key.]'
   }

@@ -1,58 +1,65 @@
 # Demomanus – Spårbar (cirka 10 minuter)
 
-**Budskapet i en mening:** AI läser, skriver och förklarar. Siffrorna kommer från en fast beräkning som matchar er
-Excel till decimalen, och en människa godkänner varje rapport.
+**Budskapet i en mening:** Rapporterna är redan uträknade när halvåret är slut. Du tittar på det som är markerat,
+skriver en rad till kunden och skickar till chefen.
+
+Mötet är för henne som gör rapporterna i dag. Visa **Medarbetare**-läget först och håll det enkelt. Prata om
+"verktyget", inte om tekniken. Frågar hon hur texten skrivs: säg som det är, att en AI-modell skriver ett förslag
+utifrån siffrorna och att hon alltid läser igenom det innan något skickas.
 
 ## Före mötet
 
 - [ ] `npm start` och kontrollera att terminalen visar **AI: live**
-- [ ] Öppna http://127.0.0.1:3000 i helskärm
-- [ ] Ha **Milj.xlsx** (MLT:s egen fil) och **ett foto av ett tankkvitto** redo på skrivbordet
-- [ ] Fråga MLT om det är okej att AI-funktionerna används på deras egen fil (bara summerade siffror skickas)
+- [ ] Öppna **http://127.0.0.1:3000/?reset** i helskärm. Det nollställer demon: inga hanterade kontroller, inga
+      låsta rapporter, läge **Medarbetare**, svenska
+- [ ] Ha **ett foto av ett tankkvitto** redo på skrivbordet (och **Milj.xlsx** om chefen är med)
+- [ ] Fråga MLT om det är okej att verktyget används på deras egen fil (bara summerade siffror skickas)
 
-## 1. Översikt (1 min)
+## 1. Mina rapporter (1 min)
 
-- "Det här är en fiktiv demokund. Allt ni ser räknas fram från orderraderna."
-- Klicka på stapeln **Lastväxlare 3-axl**: "Varje siffra går att spåra ner till orderraden och formeln."
+- "Så här ser det ut morgonen efter att halvåret är slut. Alla kunder är redan uträknade, direkt från
+  affärssystemet. Du kopierar ingenting."
+- Peka på de tre stegen: titta på det som är markerat, skriv en rad till kunden, skicka till chefen.
+- "Det här är fiktiva kunder. Allt räknas fram från orderraderna."
 
-## 2. Er egen fil (1 min)
+## 2. Steg 1: Kontrollera (3 min)
 
-- Gå till **Data** och släpp **Milj.xlsx**.
-- Gå till **Översikt**: 25,1 ton CO₂e och märket **Matchar Excel**.
-- "Samma resultat som er Excel, utan att någon kopierar in något."
+- Klicka **Granska** på Demokund A. Fyra saker är markerade.
+- Klicka **Vad betyder det?** på tonnaget: förklaringen kommer på vanlig svenska.
+- Klicka **Det stämmer** på *Interna fordon*, välj ett förslag och **Spara**. "Det här gäller alla kunder, så du
+  svarar bara en gång."
+- Hantera resten på samma sätt. Visa att rapporten till höger alltid är aktuell.
 
-## 3. Kontroller (1,5 min)
+## 3. Steg 2 och 3: Text och skicka (1,5 min)
 
-- Gå till **Kontroller**. Två allvarliga avvikelser som Excel aldrig visar, till exempel 2 682 ton från rader som inte är fakturerade.
-- Klicka **Förklara med AI** på tonnagekontrollen. Claude förklarar på vanlig svenska och föreslår åtgärder.
+- Klicka **Skriv texten åt mig**. Ändra ett ord. "Siffrorna i tabellerna rör den aldrig."
+- Byt rapportspråk till **English** och tillbaka: kunden kan få rapporten på engelska.
+- Klicka **Skicka till chefen**. Gå tillbaka till **Mina rapporter**: förloppet har flyttat sig, och de andra
+  kunderna har färre saker kvar.
 
-## 4. Kundrapport (2 min)
+## 4. Kvitton (1 min)
 
-- Gå till **Kundrapport** och klicka **Skriv sammanfattning med AI**. Texten skrivs medan ni tittar.
-- "Texten går att redigera. Siffrorna i tabellerna rör AI:n aldrig."
-- Byt rapportspråk till **English**, skriv om, och visa att kunden kan få rapporten på engelska.
-- Klicka **PDF** och öppna filen.
+- Gå till **Kvitton** och släpp fotot av tankkvittot. Datum, drivmedel, liter och belopp fylls i.
+- "Ingenting sparas förrän du har tittat på det."
 
-## 5. AI-assistent (1,5 min)
+## 5. Chefens läge (2 min, om chefen är med)
 
-- Gå till **AI-assistent** och klicka på frågorna:
-  - "Vilka fordonstyper står för mest utsläpp?"
-  - "Vad händer om vi använder svenskt marknadssnitt för HVO?"
-- Låt någon från MLT ställa en egen fråga.
+- Byt till **Chef** längst ned till vänster. Kundrapporten kommer först i menyn.
+- Visa rutan **Godkänn och lås**: vem som skickade, och kommentaren till varje hanterad kontroll.
+- Klicka **Godkänn och lås**, sedan **Arkiv**: versionen och verifieringskoden.
+- Välj Demokund B: knappen är grå. "En rapport kan inte låsas så länge något är öppet."
+- Valfritt: **Data** och släpp **Milj.xlsx** → **Översikt** visar **Matchar Excel** (25,1 ton CO₂e).
 
-## 6. Kvitton (1 min)
+## 6. Avslut (1 min)
 
-- Gå till **Kvitton** och släpp fotot av tankkvittot. Claude läser datum, drivmedel, liter och belopp.
-- "Ingenting sparas förrän en människa har granskat raderna."
-
-## 7. Avslut (1 min)
-
-- "I produktion körs allt i er egen Azure och Microsoft 365. Vi på Brick hanterar ingen av er data."
-- "Rapporterna tas fram automatiskt varje halvår, ni granskar och godkänner, och kunden får dem per e-post."
-- Nästa steg: beslutslistan och checklistan i readiness-paketet.
+- "I den färdiga versionen körs allt i er egen Microsoft-miljö. Vi på Brick hanterar ingen av er data."
+- Fråga om de sista 10 procenten av underlaget: var finns drivmedelspriset, hållbarhetsbesked för HVO,
+  avstånd per order och uppgifter från inhyrda åkerier?
 
 ## Om något strular
 
-- **AI-svaret dröjer:** fortsätt prata, det brukar komma inom 5–15 sekunder.
-- **Ingen internetanslutning:** starta utan nyckel (tom `ANTHROPIC_API_KEY`). Allt fungerar, AI-svaren är då märkta som demotexter.
+- **Svaret dröjer:** fortsätt prata, det brukar komma inom 5–15 sekunder.
+- **Ingen internetanslutning:** starta utan nyckel (tom `ANTHROPIC_API_KEY`). Allt fungerar; texterna är då
+  märkta som demotexter.
 - **Fel API-nyckel:** felet visas i portalen; kontrollera `.env` och starta om.
+- **Börja om:** öppna http://127.0.0.1:3000/?reset.
