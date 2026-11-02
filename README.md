@@ -46,7 +46,7 @@ The presenter's script, in Swedish, is in [DEMO-SCRIPT.md](DEMO-SCRIPT.md).
 
 | Setting | Default | Meaning |
 | --- | --- | --- |
-| `ANTHROPIC_API_KEY` | empty | Your key from console.anthropic.com. Empty = mock mode |
+| `ANTHROPIC_API_KEY` | empty | Your Claude API key (see below). Empty = mock mode |
 | `ANTHROPIC_MODEL` | `claude-sonnet-5-5` | Claude model used for all AI features |
 | `PORT` | `3000` | Port |
 | `HOST` | `127.0.0.1` | Only this computer. `0.0.0.0` makes it reachable on the network; then set a password |
@@ -54,10 +54,18 @@ The presenter's script, in Swedish, is in [DEMO-SCRIPT.md](DEMO-SCRIPT.md).
 | `MAX_AI_CALLS_PER_HOUR` | `120` | Hard cap to protect your API budget |
 | `MAX_TOKENS` | `1500` | Longest answer per call |
 
+## Getting a Claude API key
+
+1. Sign in to the Claude Console at [platform.claude.com](https://platform.claude.com) and add credits under
+   **Settings → Billing**. (Claude Max, Ultra and Team subscribers get monthly API credits: on claude.ai, go to
+   **Settings → Billing → API credits → Link organization**.)
+2. Create a key under **API keys**, name it `sparbar-demo`, and copy it (it starts with `sk-ant-`).
+3. Paste it into `.env` after `ANTHROPIC_API_KEY=` and restart `npm start`. The terminal should say `AI: live`.
+
 ## Keeping the key and the budget safe
 
-- Create a **separate API key just for the demo**, with a monthly spend limit in the Anthropic Console, and
-  delete it afterwards.
+- Create a **separate API key just for the demo**, set a monthly spend limit under **Settings → Billing → Spend
+  limits** in the Console, and delete the key afterwards. A full demo run uses a few dozen AI calls.
 - `.env` is in `.gitignore`. Never commit it, and never paste the key into a chat or e-mail; send it through a
   password manager.
 - The browser never sees the key: it calls `api/ai` on this server, which calls Anthropic.
