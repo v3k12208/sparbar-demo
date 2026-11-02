@@ -3,18 +3,26 @@
 A runnable demo of Spårbar, the climate-report portal for transport customers, with AI features powered by
 Claude (Anthropic). It runs on your laptop; the Anthropic API key stays on that laptop.
 
-## Start (2 minutes)
+## Start (5 minutes)
 
-You need [Node.js](https://nodejs.org) 20 or newer. There is nothing to install with npm.
+1. Install [Node.js](https://nodejs.org) (the LTS version, 20 or newer). There is nothing to install with npm.
+2. Get the code: on this repo's GitHub page click the green **Code** button → **Download ZIP**, and unzip it.
+   With Git: `git clone https://github.com/v3k12208/sparbar-demo.git`
+3. Open a terminal in the folder:
+   - **Mac:** open Terminal, type `cd ` (with a space), drag the folder into the window, press Enter.
+   - **Windows:** open the folder in File Explorer, click the address bar, type `cmd`, press Enter.
+4. Create the settings file and paste the API key after `ANTHROPIC_API_KEY=`, then save:
 
-```bash
-git clone <this repo> && cd sparbar-demo
-cp .env.example .env          # then paste the API key into .env
-npm start                     # → Spårbar demo on http://127.0.0.1:3000
-```
+   | Mac | Windows |
+   | --- | --- |
+   | `cp .env.example .env` then `open -e .env` | `copy .env.example .env` then `notepad .env` |
 
-Open http://127.0.0.1:3000. The terminal says `AI: live` when the key works.
-Without a key it says `AI: mock mode`: everything runs, and the AI answers are clearly marked demo texts.
+5. Start it with `npm start` and open http://127.0.0.1:3000 in Chrome.
+
+The terminal says `AI: live` when the key works. Without a key it says `AI: mock mode`: everything runs, and the
+AI answers are clearly marked demo texts. Keep the terminal open during the demo; `Ctrl+C` stops it.
+
+To get a newer version later: `git pull`, or download the ZIP again and copy your `.env` into the new folder.
 
 ## What the demo shows
 
