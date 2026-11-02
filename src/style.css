@@ -425,3 +425,6 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
 }
 @media (max-width: 920px) { .rail-foot { flex-wrap: wrap; gap: 8px; } }
 .step .ai-box { background: var(--surface-2); border-color: var(--line); }
+.custnav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: -6px; }
+.custnav .btn.small { padding: 5px 9px; }
+.custnav .btn.ghost { margin-left: auto; }

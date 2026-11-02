@@ -41,24 +41,27 @@ appears all at once instead of being typed out, that is the tunnel, and nothing 
 
 ## What the demo shows
 
-The switch at the bottom left picks who is using the portal. **Medarbetare** (employee) is for the person who
-prepares the reports; **Chef** (supervisor) approves and locks them. Open http://127.0.0.1:3000/?reset before a
-demo to start from scratch.
+The switch at the bottom left picks the view. **Medarbetare** (employee) is for the person who makes the reports:
+she checks, approves and locks them herself. **Chef** (supervisor) is the full portal for managers. Open
+http://127.0.0.1:3000/?reset before a demo to start from scratch.
 
-**Employee mode** is deliberately simple and never mentions AI:
+**Employee mode** is deliberately simple and never mentions AI. It opens on the report:
 
 | Where | What happens |
 | --- | --- |
-| Mina rapporter | Every customer for the period, already calculated, with what needs a look |
-| Rapport | Three steps: 1 handle the flagged checks (fix, or "Det stämmer" + a short comment; fleet-wide ones are answered once for all customers), 2 "Skriv texten åt mig", 3 "Skicka till chefen". The customer report is shown beside the steps |
+| Rapport | "Kund 1 av 3" with arrows, then three steps beside the customer report: 1 handle the flagged checks (fix, or "Det stämmer" + a short comment; fleet-wide ones are answered once for every customer), 2 "Skriv texten åt mig", 3 **Godkänn och lås**, then "Nästa kund" |
+| Alla kunder | Every customer for the period, already calculated, with what still needs a look |
 | Kvitton | Drop a photo or PDF of a fuel receipt; date, fuel, litres and amount are filled in for review |
-| Godkända | Approved, locked reports |
+| Godkända | Approved, locked reports with the comments and verification code |
+
+A report cannot be locked while a critical, serious or warning check is open. A check closes when it is fixed in the
+data or marked as handled with a comment; critical checks must be fixed.
 
 **Supervisor mode** is the full portal. The menu starts with the report, then the checks, then the overview:
 
 | Where | What happens | AI? |
 | --- | --- | --- |
-| Kundrapport | Who submitted it, every handled check with its comment, **Godkänn och lås** or **Skicka tillbaka**. A report cannot be locked while a critical, serious or warning check is open; only the supervisor can accept a critical one. **Skriv sammanfattning med AI**, and PDF/Excel/CSV/JSON export | Summary text only |
+| Kundrapport | Settings, export, every handled check with its comment, and **Godkänn och lås** (same rule as above). **Skriv sammanfattning med AI**, and PDF/Excel/CSV/JSON export | Summary text only |
 | Översikt | Key figures, emissions by vehicle type and month, click a bar to trace it to order lines | No: fixed calculation |
 | Data | Drop the customer's own Milj.xlsx; the portal reads its Rapport sheet and shows **Matchar Excel** | No |
 | Kontroller | 10 automatic data checks, each fixed or marked as handled with a comment; **Förklara med AI** explains one in plain Swedish with actions | Yes |
