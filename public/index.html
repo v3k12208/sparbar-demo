@@ -1728,7 +1728,7 @@ Example: [{"date":"2026-03-04","product":"HVO100","fuel":"HVO100","liters":412.5
         render(); return;
       }
     }
-    S.ui.aiState = 'done'; S.ui.aiMsg = L(`Claude hittade ${found} kvittorader. Granska dem innan du sparar.`, `Claude found ${found} receipt lines. Review them before saving.`); render();
+    S.ui.aiState = 'done'; S.ui.aiMsg = L(`Claude hittade ${found} ${found === 1 ? 'kvittorad' : 'kvittorader'}. Granska innan du sparar.`, `Claude found ${found} receipt ${found === 1 ? 'line' : 'lines'}. Review before saving.`); render();
   }
   async function savePending(shared) {
     const rows = S.receipts.pending.splice(0);

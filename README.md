@@ -67,7 +67,10 @@ The presenter's script, in Swedish, is in [DEMO-SCRIPT.md](DEMO-SCRIPT.md).
 ## Keeping the key and the budget safe
 
 - Create a **separate API key just for the demo**, set a monthly spend limit under **Settings → Billing → Spend
-  limits** in the Console, and delete the key afterwards. A full demo run uses a few dozen AI calls.
+  limits** in the Console, and delete the key afterwards.
+- Cost, measured with Claude Sonnet 5.5: one round of all four AI features (assistant question, check explanation,
+  report summary, receipt photo) used about 10,400 input and 2,600 output tokens, roughly **$0.05**. The terminal
+  prints the tokens of every call.
 - `.env` is in `.gitignore`. Never commit it, and never paste the key into a chat or e-mail; send it through a
   password manager.
 - The browser never sees the key: it calls `api/ai` on this server, which calls Anthropic.

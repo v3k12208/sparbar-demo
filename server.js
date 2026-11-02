@@ -95,11 +95,13 @@ async function callClaude(body, res, signal) {
   if (!body.stream) {
     const j = await r.json();
     res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8' });
-    return res.end((j.content || []).filter((b) => b.type === 'text').map((b) => b.text).join(''));
+    res.end((j.content || []).filter((b) => b.type === 'text').map((b) => b.text).join(''));
+    return { in: (j.usage && j.usage.input_tokens) || 0, out: (j.usage && j.usage.output_tokens) || 0 };
   }
   res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache', 'x-accel-buffering': 'no' });
   const reader = r.body.getReader(), dec = new TextDecoder();
   let buf = '';
+  const usage = { in: 0, out: 0 };
   for (;;) {
     const { done, value } = await reader.read();
     if (done) break;
@@ -110,10 +112,13 @@ async function callClaude(body, res, signal) {
       if (!line.startsWith('data:')) continue;
       let ev; try { ev = JSON.parse(line.slice(5)); } catch (e) { continue; }
       if (ev.type === 'content_block_delta' && ev.delta && ev.delta.type === 'text_delta') res.write(ev.delta.text);
+      else if (ev.type === 'message_start' && ev.message && ev.message.usage) usage.in = ev.message.usage.input_tokens || 0;
+      else if (ev.type === 'message_delta' && ev.usage) usage.out = ev.usage.output_tokens || usage.out;
       else if (ev.type === 'error') console.error('[ai] stream error:', ev.error && ev.error.message);
     }
   }
   res.end();
+  return usage;
 }
 
 // ---------- mock mode (no API key) ----------
@@ -159,8 +164,9 @@ const server = http.createServer(async (req, res) => {
     const ctl = new AbortController();
     res.on('close', () => { if (!res.writableEnded) ctl.abort(); });
     try {
-      if (MODE === 'mock') await mock(body, res); else await callClaude(body, res, ctl.signal);
-      console.log(`[ai] ${MODE} ${body.mode || 'text'}${body.stream ? ' stream' : ''} ${body.images && body.images.length ? body.images.length + ' image(s) ' : ''}${Date.now() - started} ms`);
+      const u = MODE === 'mock' ? await mock(body, res) : await callClaude(body, res, ctl.signal);
+      const tokens = u && (u.in || u.out) ? `, ${u.in} in / ${u.out} out tokens` : '';
+      console.log(`[ai] ${MODE} ${body.mode || 'text'}${body.stream ? ' stream' : ''} ${body.images && body.images.length ? body.images.length + ' image(s) ' : ''}${Date.now() - started} ms${tokens}`);
     } catch (e) {
       if (ctl.signal.aborted) return;
       console.error('[ai] failed:', e.message);
