@@ -42,6 +42,7 @@
     dirtyShared: false, sharedLoaded: false
   };
   const L = (sv, en) => (S.lang === 'en' ? en : sv);
+  const dsT = (ds, k) => (S.lang === 'en' && ds.en && ds.en[k] != null ? ds.en[k] : k === 'datasetName' ? null : ds[k]);
   const loc = (lang) => (lang === 'en' ? 'en-GB' : 'sv-SE');
   const nfc = {};
   function nf(n, d = 0, lang = S.lang) {
@@ -92,7 +93,7 @@
     if (mt.customerNames) S.settings.customerNames = Object.assign({}, mt.customerNames, S.settings.customerNames);
     if (mt.issuer && !S.settings.issuer) S.settings.issuer = mt.issuer;
     const excel = mt.excel ? Object.assign({ customer: mt.customer, from: mt.period ? mt.period.split('/')[0] : '2026-01-01', to: mt.period ? mt.period.split('/')[1] : '2026-06-30' }, mt.excel) : null;
-    setDataset({ name: mt.datasetName || 'Milj.xlsx', isSample: true, source: mt.source, lines, rtBase: E.resourceTypesFrom(SAMPLE.resourceTypes), tables: mt.tables || ['Antal ton (orderrader)', 'Resursdata (drivmedelsandelar)'], excel });
+    setDataset({ name: mt.datasetName || 'Milj.xlsx', isSample: true, source: mt.source, en: mt.en || (mt.tables ? null : { tables: ['Antal ton (order lines)', 'Resursdata (fuel cost shares)'] }), lines, rtBase: E.resourceTypesFrom(SAMPLE.resourceTypes), tables: mt.tables || ['Antal ton (orderrader)', 'Resursdata (drivmedelsandelar)'], excel });
   }
   function setDataset(ds) {
     S.dataset = ds;
@@ -355,7 +356,9 @@
     return wb.SheetNames.map((n) => ({ sheet: n, rows: window.XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, raw: true, defval: null }) }));
   }
   async function importData(files) {
-    const found = { orders: [], invoiceLines: [], resourceTypes: null, names: [], notes: [], excel: null };
+    const found = { orders: [], invoiceLines: [], resourceTypes: null, names: [], namesEn: [], notes: [], excel: null };
+    // table descriptions in both languages, so the Data view follows a later language switch
+    const pushName = (f) => { const keep = S.lang; S.lang = 'sv'; found.names.push(f()); S.lang = 'en'; found.namesEn.push(f()); S.lang = keep; };
     for (const f of files) {
       if (!/\.(xlsx|xlsm|xls|csv|txt)$/i.test(f.name)) { found.notes.push(L(`${f.name}: filtypen stöds inte.`, `${f.name}: file type not supported.`)); continue; }
       let tables;
@@ -367,16 +370,16 @@
           if (Number.isFinite(total) && total > 0 && ef > 0 && price > 0 && hm) found.excel = { totalKg: total, efHvo: ef, price, from: hm[1] === '1' ? `${hm[2]}-01-01` : `${hm[2]}-07-01`, to: hm[1] === '1' ? `${hm[2]}-06-30` : `${hm[2]}-12-31` };
         }
         const c = E.classifyTable(tb.rows);
-        if (c.kind === 'orders') { found.orders.push(...c.lines); found.names.push(`${tb.sheet} (${L('orderrader', 'order lines')}, ${c.lines.length})`); }
-        else if (c.kind === 'invoiceLines') { found.invoiceLines.push(Object.assign(c, { sheet: tb.sheet })); found.names.push(`${tb.sheet} (${L('fakturarader', 'invoice lines')}, ${c.lines.length}${c.blankAmounts ? ', ' + L('belopp saknas', 'amounts missing') : ''})`); }
-        else if (c.kind === 'resourceTypes') { found.resourceTypes = c.rows; found.names.push(`${tb.sheet} (${L('resurstyper', 'vehicle types')}, ${c.rows.length})`); }
+        if (c.kind === 'orders') { found.orders.push(...c.lines); pushName(() => `${tb.sheet} (${L('orderrader', 'order lines')}, ${c.lines.length})`); }
+        else if (c.kind === 'invoiceLines') { found.invoiceLines.push(Object.assign(c, { sheet: tb.sheet })); pushName(() => `${tb.sheet} (${L('fakturarader', 'invoice lines')}, ${c.lines.length}${c.blankAmounts ? ', ' + L('belopp saknas', 'amounts missing') : ''})`); }
+        else if (c.kind === 'resourceTypes') { found.resourceTypes = c.rows; pushName(() => `${tb.sheet} (${L('resurstyper', 'vehicle types')}, ${c.rows.length})`); }
       }
     }
     let lines = found.orders;
     const inv = found.invoiceLines.filter((x) => !x.blankAmounts).flatMap((x) => x.lines);
     const invAll = found.invoiceLines.flatMap((x) => x.lines);
     if (!lines.length && inv.length) lines = inv;
-    if (!lines.length) { S.ui.importMsg = { sev: 'serious', t: L('Hittade inga orderrader eller fakturarader med belopp.', 'Found no order lines or invoice lines with amounts.'), d: found.names.concat(found.notes) }; render(); return; }
+    if (!lines.length) { S.ui.importMsg = { sev: 'serious', t: L('Hittade inga orderrader eller fakturarader med belopp.', 'Found no order lines or invoice lines with amounts.'), d: (S.lang === 'en' ? found.namesEn : found.names).concat(found.notes) }; render(); return; }
     // fill customer & supplier from invoice lines when orders lack them
     const invCustomers = [...new Set(invAll.map((l) => l.customer).filter(Boolean))];
     const supByRes = new Map(invAll.filter((l) => l.resource != null && l.supplier != null).map((l) => [l.resource, l.supplier]));
@@ -392,8 +395,8 @@
       found.excel.customer = invCustomers.length === 1 ? invCustomers[0] : lines[0].customer;
       found.notes.push(L(`Fliken Rapport hittades: Excel visar ${nf(found.excel.totalKg, 2)} kg CO₂e. Portalen jämför automatiskt.`, `Found the Rapport sheet: Excel shows ${nf(found.excel.totalKg, 2)} kg CO₂e. The portal compares automatically.`));
     }
-    setDataset({ name: files.map((f) => f.name).join(', '), isSample: false, source: L('Importerad fil', 'Imported file'), lines, rtBase, tables: found.names, excel: found.excel || null });
-    S.ui.importMsg = { sev: 'ok', t: L(`Importerade ${nf(lines.length)} rader.`, `Imported ${nf(lines.length)} rows.`), d: found.names.concat(found.notes) };
+    setDataset({ name: files.map((f) => f.name).join(', '), isSample: false, source: 'Importerad fil', en: { source: 'Imported file', tables: found.namesEn }, lines, rtBase, tables: found.names, excel: found.excel || null });
+    S.ui.importMsg = { sev: 'ok', t: L(`Importerade ${nf(lines.length)} rader.`, `Imported ${nf(lines.length)} rows.`), d: (S.lang === 'en' ? found.namesEn : found.names).concat(found.notes) };
     recompute(); render();
   }
 
@@ -668,6 +671,9 @@ ${JSON.stringify(aiContext(S.lang))}`;
     ['regelverk', () => L('Regelverk', 'Regulations'), 'scale'], ['automatik', () => L('Automatik', 'Automation'), 'flow'], ['arkiv', () => L('Arkiv', 'Archive'), 'archive']
   ];
   function renderNav() {
+    document.documentElement.lang = S.lang;
+    const sub = document.querySelector('.brand-sub'); if (sub) sub.textContent = L('Klimatrapporter för transporter', 'Climate reports for transport');
+    $('#nav').setAttribute('aria-label', L('Huvudmeny', 'Main menu'));
     const open = S.checks.filter((c) => c.sev === 'critical' || c.sev === 'serious').length;
     $('#nav').innerHTML = VIEWS.map((v) => {
       if (!v) return '<div class="nav-sep" role="separator"></div>';
@@ -692,7 +698,7 @@ ${JSON.stringify(aiContext(S.lang))}`;
       <div class="ctx-field"><label for="ctx-period">${L('Period', 'Period')}</label><select id="ctx-period">${perOpts}</select></div>
       ${c.periodId === 'custom' ? `<div class="ctx-field"><label for="ctx-from">${L('Från – till', 'From – to')}</label><div class="ctx-dates"><input type="date" id="ctx-from" value="${c.from}" min="${ds.minDate}" max="${ds.maxDate}"><input type="date" id="ctx-to" aria-label="${L('Till', 'To')}" value="${c.to}" min="${ds.minDate}" max="${ds.maxDate}"></div></div>` : ''}
       <div class="ctx-spacer"></div>
-      <span class="pill ${ds.isSample ? 'sample' : ''}" title="${esc(ds.source)}">${icon('db').replace('<svg', '<svg width="13" height="13" style="stroke:currentColor;fill:none;stroke-width:2"')}${ds.isSample ? L('Exempeldata', 'Sample data') + ': ' : ''}${esc(ds.name)}</span>
+      <span class="pill ${ds.isSample ? 'sample' : ''}" title="${esc(dsT(ds, 'source'))}">${icon('db').replace('<svg', '<svg width="13" height="13" style="stroke:currentColor;fill:none;stroke-width:2"')}${ds.isSample ? L('Exempeldata', 'Sample data') + ': ' : ''}${esc(dsT(ds, 'datasetName') || ds.name)}</span>
       ${statusPill()}`;
   }
 
@@ -849,7 +855,7 @@ ${JSON.stringify(aiContext(S.lang))}`;
       : `<button class="btn" data-act="lockAsk" ${st.status === 'locked' ? 'disabled' : ''}>${icon('lock')}${st.status === 'locked' ? L(`Låst som v${st.version}`, `Locked as v${st.version}`) : L('Lås och arkivera', 'Lock and archive')}</button>`;
     const fuelOpt = (cls, sel) => Object.entries(c.fuels).filter(([, f]) => f.shareCol === cls).map(([k, f]) => `<option value="${esc(k)}" ${k === sel ? 'selected' : ''}>${esc(f.label[S.lang] || f.label.sv)} · ${nf(f.wtw, 3)}</option>`).join('');
     return `
-    <div class="vhead"><div><h1>${L('Kundrapport', 'Customer report')}</h1><p>${L('Förhandsvisning av det kunden får. Klicka på en rad i tabellen för att se exakt hur den räknats.', 'Preview of what the customer receives. Click a row in the table to see exactly how it was calculated.')}</p></div></div>
+    <div class="vhead"><div><h1>${L('Kundrapport', 'Customer report')}</h1><p>${L('Förhandsvisning av det kunden får. Klicka på en rad i tabellen för att se exakt hur den räknats.', 'Preview of what the customer receives. Click a row in the table to see exactly how it was calculated.')}${S.settings.reportLang !== S.lang ? ' ' + L('Rapporten är på engelska; byt under Rapportens språk.', 'The report itself is in Swedish; change it under Report language.') : ''}</p></div></div>
     <div class="grid g-side">
       <div class="card stack">
         <div class="panel-sec"><h4>${L('Innehåll', 'Content')}</h4>
@@ -903,8 +909,8 @@ ${JSON.stringify(aiContext(S.lang))}`;
     return `<div class="vhead"><div><h1>${L('Data', 'Data')}</h1><p>${L('Underlaget som rapporterna räknas från. I produktion hämtas det nattligt från ert SQL-system; i prototypen läser ni in samma Excel-fil som idag.', 'The data the reports are calculated from. In production it is pulled nightly from your SQL system; in the prototype you load the same Excel file as today.')}</p></div></div>
     <section class="grid g-2">
       <div class="card stack"><div class="card-h" style="margin:0"><h3>${L('Laddat underlag', 'Loaded data')}</h3>${ds.isSample ? `<span class="pill sample">${L('Exempeldata', 'Sample data')}</span>` : `<button class="btn small" data-act="resetSample">${L('Tillbaka till exempeldata', 'Back to sample data')}</button>`}</div>
-        <dl class="kv"><dt>${L('Fil', 'File')}</dt><dd>${esc(ds.name)}</dd><dt>${L('Källa', 'Source')}</dt><dd>${esc(ds.source)}</dd><dt>${L('Rader', 'Rows')}</dt><dd>${nf(lines.length)} (${Object.entries(st).map(([k, v]) => `${esc(k)}: ${nf(v)}`).join(' · ')})</dd>
-          <dt>${L('Datum', 'Dates')}</dt><dd>${ds.minDate} – ${ds.maxDate}</dd><dt>${L('Kunder', 'Customers')}</dt><dd>${ds.customers.map(esc).join(', ') || '–'}</dd><dt>${L('Tabeller', 'Tables')}</dt><dd>${(ds.tables || []).map(esc).join('<br>')}</dd></dl>
+        <dl class="kv"><dt>${L('Fil', 'File')}</dt><dd>${esc(dsT(ds, 'datasetName') || ds.name)}</dd><dt>${L('Källa', 'Source')}</dt><dd>${esc(dsT(ds, 'source'))}</dd><dt>${L('Rader', 'Rows')}</dt><dd>${nf(lines.length)} (${Object.entries(st).map(([k, v]) => `${esc(k)}: ${nf(v)}`).join(' · ')})</dd>
+          <dt>${L('Datum', 'Dates')}</dt><dd>${ds.minDate} – ${ds.maxDate}</dd><dt>${L('Kunder', 'Customers')}</dt><dd>${ds.customers.map(esc).join(', ') || '–'}</dd><dt>${L('Tabeller', 'Tables')}</dt><dd>${(dsT(ds, 'tables') || []).map(esc).join('<br>')}</dd></dl>
         <p class="small muted">${L('Status F = fakturerad. Bara fakturerade rader bär belopp och ingår i utsläppen. Fritextfältet Interntext läses aldrig in.', 'Status F = invoiced. Only invoiced rows carry amounts and count toward emissions. The Interntext free-text field is never imported.')}</p>
       </div>
       <div class="card stack"><h3>${L('Läs in ny fil', 'Load a new file')}</h3>
