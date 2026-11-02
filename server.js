@@ -98,7 +98,7 @@ async function callClaude(body, res, signal) {
     res.end((j.content || []).filter((b) => b.type === 'text').map((b) => b.text).join(''));
     return { in: (j.usage && j.usage.input_tokens) || 0, out: (j.usage && j.usage.output_tokens) || 0 };
   }
-  res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache', 'x-accel-buffering': 'no' });
+  res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache, no-transform', 'x-accel-buffering': 'no' });
   const reader = r.body.getReader(), dec = new TextDecoder();
   let buf = '';
   const usage = { in: 0, out: 0 };
@@ -141,7 +141,7 @@ async function mock(body, res) {
   const lang = /sammanfattningen|KONTROLL \(|[åäö]/.test(Array.isArray(body.input) ? lastQ : all) ? 'sv' : 'en';
   const kind = /summary paragraph|sammanfattningen i en klimatrapport/.test(all) ? 'summary' : /CHECK \(|KONTROLL \(/.test(all) ? 'explain' : 'chat';
   const text = MOCK[lang][kind];
-  res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache' });
+  res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache, no-transform' });
   if (!body.stream) return res.end(text);
   for (const word of text.split(/(?<=\s)/)) { res.write(word); await new Promise((r) => setTimeout(r, 18)); }
   res.end();

@@ -24,6 +24,21 @@ AI answers are clearly marked demo texts. Keep the terminal open during the demo
 
 To get a newer version later: `git pull`, or download the ZIP again and copy your `.env` into the new folder.
 
+## Share it from your computer (link for people elsewhere)
+
+Anyone with the link uses your API key, so **set a password first**: put `DEMO_PASSWORD=something` in `.env`
+(the browser then asks for it; any user name works). Then:
+
+1. Start the demo: `npm start`.
+2. Install Cloudflare's free tunnel tool once: Mac `brew install cloudflared`, Windows
+   `winget install --id Cloudflare.cloudflared`. No Cloudflare account is needed.
+3. In a second terminal: `cloudflared tunnel --url http://localhost:3000`
+4. It prints a link like `https://some-random-words.trycloudflare.com`. Send that link, and the password separately.
+
+Your computer must stay on, awake and online, with both terminals open. The link changes every time you restart the
+tunnel, and Cloudflare gives no uptime guarantee, so this is for testing, not for a customer meeting. If the AI text
+appears all at once instead of being typed out, that is the tunnel, and nothing is wrong.
+
 ## What the demo shows
 
 | Where | What happens | AI? |
