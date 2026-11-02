@@ -59,7 +59,9 @@ The presenter's script, in Swedish, is in [DEMO-SCRIPT.md](DEMO-SCRIPT.md).
 1. Sign in to the Claude Console at [platform.claude.com](https://platform.claude.com) and add credits under
    **Settings → Billing**. (Claude Max, Ultra and Team subscribers get monthly API credits: on claude.ai, go to
    **Settings → Billing → API credits → Link organization**.)
-2. Create a key under **API keys**, name it `sparbar-demo`, and copy it (it starts with `sk-ant-`).
+2. Go to **API keys** (platform.claude.com/settings/keys) → **Create key**. Name it `sparbar-demo`, pick an
+   expiration (for example 7 days, so it switches itself off after the demo), and **select a workspace** (Default is
+   fine). Copy the key straight away: it starts with `sk-ant-` and is shown only once.
 3. Paste it into `.env` after `ANTHROPIC_API_KEY=` and restart `npm start`. The terminal should say `AI: live`.
 
 ## Keeping the key and the budget safe
@@ -89,7 +91,12 @@ npm test     # server test against a fake Anthropic API: streaming, JSON, wrong 
 
 ## Troubleshooting
 
-- **"The API key was not accepted"**: check `ANTHROPIC_API_KEY` in `.env`, then restart `npm start`.
+- **"The API key was not accepted"**: check `ANTHROPIC_API_KEY` in `.env`, then restart `npm start`. Expired keys
+  also give this error.
+- **"This API key is not scoped to a workspace…"**: create a new key with a workspace selected, or put the workspace
+  ID (`wrkspc_…`) in `ANTHROPIC_WORKSPACE_ID`.
+- **"You have reached your specified API usage limits"**: the spend limit is reached; raise it under Settings → Billing.
+- **"Your credit balance is too low"**: add credits under Settings → Billing.
 - **"More than N AI calls in the last hour"**: raise `MAX_AI_CALLS_PER_HOUR` or wait.
 - **Port in use**: set `PORT=3001` in `.env`.
 - **Fonts look plain offline**: the Roboto font loads from Google Fonts; everything else works offline.

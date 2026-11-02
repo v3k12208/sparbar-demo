@@ -24,6 +24,7 @@ const HOST = process.env.HOST || '127.0.0.1';
 const KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5-5';
 const API_BASE = (process.env.ANTHROPIC_BASE_URL || 'https://api.anthropic.com').replace(/\/$/, '');
+const WORKSPACE = (process.env.ANTHROPIC_WORKSPACE_ID || '').trim(); // only for keys not scoped to a workspace
 const MAX_TOKENS = Number(process.env.MAX_TOKENS) || 1500;
 const PASSWORD = process.env.DEMO_PASSWORD || '';
 const CALLS_PER_HOUR = Number(process.env.MAX_AI_CALLS_PER_HOUR) || 120;
@@ -81,7 +82,7 @@ async function callClaude(body, res, signal) {
   if (body.mode === 'json') payload.system = 'Reply with only valid JSON, no prose and no code fences.';
   const r = await fetch(API_BASE + '/v1/messages', {
     method: 'POST', signal,
-    headers: { 'x-api-key': KEY, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+    headers: Object.assign({ 'x-api-key': KEY, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' }, WORKSPACE ? { 'anthropic-workspace-id': WORKSPACE } : {}),
     body: JSON.stringify(payload)
   });
   if (!r.ok) {
