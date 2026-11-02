@@ -1355,7 +1355,7 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
   // ---------- state ----------
   const S = {
     lang: store.get('lang') === 'en' ? 'en' : 'sv', view: 'oversikt',
-    // Who is using the portal: 'employee' prepares reports, 'supervisor' approves and locks them.
+    // Which view is shown: 'employee' = Simple (the person who makes the reports), 'supervisor' = Complex (the full portal).
     mode: store.get('mode') === 'supervisor' ? 'supervisor' : 'employee',
     reviews: {}, myName: '',
     dataset: null, ctx: null, ectx: null, rtOverrides: {},
@@ -1573,7 +1573,7 @@ pre.codeblock { margin: 0; background: var(--surface-2); border: 1px solid var(-
   }
   const openOf = (checks, cust, from, to) => checks.filter((c) => BLOCKING.includes(c.sev) && !ackFor(c, cust, from, to));
   const openNow = () => (S.ectx ? openOf(S.checks, S.ectx.customer, S.ectx.from, S.ectx.to) : []);
-  const roleName = (r) => (r === 'supervisor' ? L('Chef', 'Supervisor') : L('Medarbetare', 'Employee'));
+  const roleName = () => L('en användare', 'a user');
   const who = () => ({ by: S.me || null, name: S.myName || '', role: S.mode, at: new Date().toISOString() });
   // Local date and time for timestamps stored as ISO (UTC).
   const when = (iso, withTime = true) => { const d = new Date(iso); if (!iso || isNaN(d)) return ''; return withTime ? d.toLocaleString(loc(S.lang), { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : d.toLocaleDateString(loc(S.lang), { year: 'numeric', month: '2-digit', day: '2-digit' }); };
@@ -2104,7 +2104,7 @@ ${JSON.stringify(aiContext(S.lang))}`;
       const badge = n ? `<span class="badge" aria-label="${n} ${v[0] === 'mina' ? L('att göra', 'to do') : L('öppna', 'open')}">${n}</span>` : '';
       return `<a href="#${v[0]}" ${S.view === v[0] ? 'aria-current="page"' : ''}>${icon(v[2])}<span>${v[1]()}</span>${badge}</a>`;
     }).join('');
-    $('#railfoot').innerHTML = `<div class="seg mode-seg" role="group" aria-label="${L('Läge', 'Mode')}"><button data-act="mode" data-v="employee" aria-pressed="${EMP()}">${L('Medarbetare', 'Employee')}</button><button data-act="mode" data-v="supervisor" aria-pressed="${!EMP()}">${L('Chef', 'Supervisor')}</button></div>
+    $('#railfoot').innerHTML = `<div class="seg mode-seg" role="group" aria-label="${L('Vy', 'View')}"><button data-act="mode" data-v="employee" aria-pressed="${EMP()}">${L('Enkel', 'Simple')}</button><button data-act="mode" data-v="supervisor" aria-pressed="${!EMP()}">${L('Avancerad', 'Complex')}</button></div>
       <div class="seg" role="group" aria-label="${L('Språk', 'Language')}"><button data-act="lang" data-v="sv" aria-pressed="${S.lang === 'sv'}">SV</button><button data-act="lang" data-v="en" aria-pressed="${S.lang === 'en'}">EN</button></div>
       <span class="hide-sm">${L('Prototyp · beräkningar körs i webbläsaren', 'Prototype · calculations run in the browser')}</span>`;
   }

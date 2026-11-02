@@ -41,11 +41,11 @@ appears all at once instead of being typed out, that is the tunnel, and nothing 
 
 ## What the demo shows
 
-The switch at the bottom left picks the view. **Medarbetare** (employee) is for the person who makes the reports:
-she checks, approves and locks them herself. **Chef** (supervisor) is the full portal for managers. Open
+The switch at the bottom left picks the view. **Enkel** (Simple) is for the person who makes the reports: she
+checks, approves and locks them herself. **Avancerad** (Complex) is the full portal for managers. Open
 http://127.0.0.1:3000/?reset before a demo to start from scratch.
 
-**Employee mode** is deliberately simple and never mentions AI. It opens on the report:
+**The Simple view** is deliberately simple and never mentions AI. It opens on the report:
 
 | Where | What happens |
 | --- | --- |
@@ -57,7 +57,7 @@ http://127.0.0.1:3000/?reset before a demo to start from scratch.
 A report cannot be locked while a critical, serious or warning check is open. A check closes when it is fixed in the
 data or marked as handled with a comment; critical checks must be fixed.
 
-**Supervisor mode** is the full portal. The menu starts with the report, then the checks, then the overview:
+**The Complex view** is the full portal. The menu starts with the report, then the checks, then the overview:
 
 | Where | What happens | AI? |
 | --- | --- | --- |

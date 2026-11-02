@@ -3,7 +3,7 @@
 **Budskapet i en mening:** Rapporterna är redan uträknade när halvåret är slut. Du tittar på det som är markerat,
 skriver en rad till kunden och godkänner. Klart.
 
-Mötet är för henne som gör rapporterna i dag. Visa **Medarbetare**-läget först och håll det enkelt. Prata om
+Mötet är för henne som gör rapporterna i dag. Visa vyn **Enkel** först och håll det enkelt. Prata om
 "verktyget", inte om tekniken. Frågar hon hur texten skrivs: säg som det är, att en AI-modell skriver ett förslag
 utifrån siffrorna och att hon alltid läser igenom det innan något skickas.
 
@@ -11,7 +11,7 @@ utifrån siffrorna och att hon alltid läser igenom det innan något skickas.
 
 - [ ] `npm start` och kontrollera att terminalen visar **AI: live**
 - [ ] Öppna **http://127.0.0.1:3000/?reset** i helskärm. Det nollställer demon: inga hanterade kontroller, inga
-      låsta rapporter, läge **Medarbetare**, svenska. Portalen öppnar på rapporten för första kunden
+      låsta rapporter, vyn **Enkel**, svenska. Portalen öppnar på rapporten för första kunden
 - [ ] Ha **ett foto av ett tankkvitto** redo på skrivbordet (och **Milj.xlsx** om chefen är med)
 - [ ] Fråga MLT om det är okej att verktyget används på deras egen fil (bara summerade siffror skickas)
 
@@ -42,9 +42,9 @@ utifrån siffrorna och att hon alltid läser igenom det innan något skickas.
 - Gå till **Kvitton** och släpp fotot av tankkvittot. Datum, drivmedel, liter och belopp fylls i.
 - "Ingenting sparas förrän du har tittat på det."
 
-## 5. Chefens vy (1 min, om chefen är med)
+## 5. Vyn Avancerad (1 min, om chefen är med)
 
-- Byt till **Chef** längst ned till vänster: hela portalen med översikt, faktorer, regelverk och AI-assistent.
+- Byt till **Avancerad** längst ned till vänster: hela portalen med översikt, faktorer, regelverk och AI-assistent.
 - **Godkända** / **Arkiv**: öppna den låsta rapporten och visa kommentarerna och verifieringskoden.
 - Valfritt: **Data** och släpp **Milj.xlsx** → **Översikt** visar **Matchar Excel** (25,1 ton CO₂e).
 
